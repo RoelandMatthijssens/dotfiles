@@ -1,0 +1,28 @@
+[global_config]
+  borderless = True
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  scroll_tabbar = True
+  tab_position = left
+[keybindings]
+  new_window = <Primary><Shift>e
+  split_vert = <Primary><Shift>i
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 900, 900
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    allow_bold = False
+    background_color = "#002b36"
+    cursor_color = "#839496"
+    font = Roboto Mono Medium for Powerline Medium 9
+    foreground_color = "#839496"
+    palette = "#000000:#cd0000:#00cd00:#cdcd00:#0000cd:#cd00cd:#00cdcd:#faebd7:#404040:#ff0000:#00ff00:#ffff00:#0000ff:#ff00ff:#00ffff:#ffffff"
+    scrollback_infinite = True
+    use_system_font = False

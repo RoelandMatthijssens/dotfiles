@@ -1,0 +1,9 @@
+Install stow
+Install oh-my-zsh
+Install git
+Install tmux
+Install vim
+Install vundle for vim
+
+run stow
+Start vim and run :PluginInstall
