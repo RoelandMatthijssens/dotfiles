@@ -1,0 +1,27 @@
+[global_config]
+  borderless = True
+  enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+  scroll_tabbar = True
+  tab_position = left
+[keybindings]
+  new_window = <Primary><Shift>e
+  split_vert = <Primary><Shift>i
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      size = 900, 900
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#002b36"
+    background_image = None
+    font = Roboto Mono for Powerline 10
+    foreground_color = "#839496"
+    scroll_on_output = False
+    scrollback_infinite = True
+    use_system_font = False

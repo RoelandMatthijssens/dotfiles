@@ -5,8 +5,8 @@
 	editor = vim
 [alias]
     co = checkout
-    p = pull
-    s = status
+    p = !git push --set-upstream ${1-origin} HEAD
+    s = status --branch
     l = !"git short-log"
     ll = !"git long-log"
     lla = !"git log-with-author"
