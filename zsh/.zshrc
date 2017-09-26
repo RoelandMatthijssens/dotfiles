@@ -49,7 +49,7 @@ alias gis="git status"
 alias vpn="sudo openvpn --config ~/tools/openvpn/client.ovpn"
 
 # Start tmux when zsh is launched
-if which tmux 2>&1 >/dev/null && [ "$TERM" != "screen-256color" ]; then
+if which tmux 2>&1 >/dev/null && [ "$TERM" != "screen-256color" ] && [[ -z $SSH_CONNECTION ]]; then
     export DISABLE_AUTO_TITLE=true
     test -z "$TMUX" && (tmux attach || tmux)
 fi
