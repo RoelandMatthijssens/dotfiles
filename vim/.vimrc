@@ -8,7 +8,6 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rking/ag.vim'
-Plugin 'wincent/command-t'
 Plugin 'powerline/fonts'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree'
@@ -28,6 +27,8 @@ Plugin 'christoomey/vim-sort-motion'
 Plugin 'kana/vim-textobj-user'
 Plugin 'kana/vim-textobj-indent'
 Plugin 'bps/vim-textobj-python'
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()
 
@@ -116,7 +117,7 @@ autocmd BufWritePre * %s/\s\+$//e
 
 " remaps
 inoremap <C-Space> <C-p>
-nnoremap <leader>l :CommandT<cr>
+nnoremap <leader>l :FZF<cr>
 
 "faster scrolling
 nnoremap <C-e> 3<C-e>

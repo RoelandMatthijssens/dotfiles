@@ -18,10 +18,10 @@
 [plugins]
 [profiles]
   [[default]]
+    allow_bold = False
     background_color = "#002b36"
-    background_image = None
-    font = Roboto Mono for Powerline 10
+    cursor_color = "#839496"
+    font = Roboto Mono Light for Powerline Light 9
     foreground_color = "#839496"
-    scroll_on_output = False
     scrollback_infinite = True
     use_system_font = False

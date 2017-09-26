@@ -2,9 +2,11 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
+export TERMINFO=~/.terminfo
 export ZSH=/home/enermis/.oh-my-zsh
 export TERM=xterm-256color
 export PATH=./bin:$PATH
+#export SHELL=/bin/zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -25,7 +27,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 
 # Virtualenv
-. /usr/local/bin/virtualenvwrapper.sh
+#. /usr/local/bin/virtualenvwrapper.sh
 
 # time each command
 function preexec() {
