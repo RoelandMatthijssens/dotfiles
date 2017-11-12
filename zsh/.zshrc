@@ -41,8 +41,9 @@ function precmd () {
 }
 
 alias mylocal="echo dev; mycli -pdev mysql://root@0.0.0.0:33066/mvne"
-alias myecho="echo Su0O5HHxZ7; mycli -pSu0O5HHxZ7 mysql://mvne@mysqldev1.internal.vikingco.com:3313/mvne"
-alias mydelta="echo Su0O5HHxZ6; mycli -pSu0O5HHxZ6 mysql://mvne@mysqldev1.internal.vikingco.com:3312/mvne"
+alias myecho="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3313/mvne"
+alias mybravo="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3310/mvne"
+alias mydelta="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3312/mvne"
 alias dockerclean="docker ps -a | grep Exited | cut -d ' ' -f 1 | xargs docker rm"
 alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs docker rmi -f"
 alias gis="git status"

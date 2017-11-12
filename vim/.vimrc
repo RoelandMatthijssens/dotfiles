@@ -15,7 +15,6 @@ Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'vim-airline/vim-airline'
-Plugin 'nvie/vim-flake8'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'garbas/vim-snipmate'
@@ -101,6 +100,11 @@ nnoremap <C-u> <C-u>zz
 nnoremap <C-S-y> "+y
 vnoremap <C-S-y> "+y
 
+"don't open the first occurence when searching with Ag
+ca Ag Ag!
+"use Ag to find usages
+nnoremap <leader>u *:AgFromSearch!<cr>
+
 "common command typos
 command Q q
 nnoremap Q <nop>
@@ -169,6 +173,8 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#branch#displayed_head_limit = 10
 
 let g:solarized_diffmode="high"
+
+let g:flake8_cmd="/usr/bin/python3-flake8"
 colorscheme enermis
 
 
@@ -178,4 +184,4 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-nnoremap <leader>git :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs google-chrome<CR><CR>
+nnoremap <leader>git :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs xdg-open<CR><CR>
