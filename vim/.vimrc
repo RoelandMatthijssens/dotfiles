@@ -35,6 +35,7 @@ call vundle#end()
 filetype plugin indent on
 
 set ttyfast
+set visualbell
 
 " fold control
 set foldmethod=indent
