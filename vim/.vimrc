@@ -55,7 +55,7 @@ set relativenumber
 set number
 
 set list
-set listchars=tab:▸\ ,eol:$,extends:¬,precedes:‽
+set listchars=tab:▸\ ,extends:¬,precedes:‽
 
 set textwidth=119
 " indent when moving to the next line while writing code
