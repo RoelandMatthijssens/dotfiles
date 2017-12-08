@@ -1,8 +1,9 @@
 let mapleader = ","
 
 set nocompatible
+filetype off
 
-" Vundle setup
+"filetype off Vundle setup
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
@@ -28,10 +29,13 @@ Plugin 'kana/vim-textobj-indent'
 Plugin 'bps/vim-textobj-python'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
+Plugin 'rust-lang/rust.vim'
 
 call vundle#end()
+filetype plugin indent on
 
 set ttyfast
+set visualbell
 
 " fold control
 set foldmethod=indent

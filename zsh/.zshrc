@@ -55,3 +55,5 @@ if which tmux 2>&1 >/dev/null && [ "$TERM" != "screen-256color" ] && [[ -z $SSH_
     test -z "$TMUX" && (tmux attach || tmux)
 fi
 
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
