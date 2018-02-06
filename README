@@ -1,9 +1,15 @@
+basic requirements:
+-------------------
 Install stow
 Install oh-my-zsh
 Install git
 Install tmux
 Install vim
 Install vundle for vim
+
+i3:
+---
+install i3 i3lock dmenu feh
 
 run stow
 Start vim and run :PluginInstall
