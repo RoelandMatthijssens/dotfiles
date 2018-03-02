@@ -10,7 +10,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'rking/ag.vim'
 Plugin 'powerline/fonts'
-Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
@@ -40,7 +39,7 @@ set visualbell
 " fold control
 set foldmethod=indent
 set foldnestmax=1
-set foldlevel=0
+set foldlevel=99
 nnoremap <space> za
 
 set ignorecase

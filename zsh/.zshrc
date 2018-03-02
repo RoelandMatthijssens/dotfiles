@@ -4,8 +4,8 @@
 # Path to your oh-my-zsh installation.
 export TERMINFO=~/.terminfo
 export ZSH=/home/enermis/.oh-my-zsh
-export TERM=xterm-256color
-export PATH=./bin:$PATH
+#export TERM=xterm-256color
+export PATH=~/bin:./bin:~/.gem/ruby/2.5.0/bin:$PATH
 #export SHELL=/bin/zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -44,6 +44,7 @@ alias mylocal="echo dev; mycli -pdev mysql://root@0.0.0.0:33066/mvne"
 alias myecho="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3313/mvne"
 alias mybravo="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3310/mvne"
 alias mydelta="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3312/mvne"
+alias myuwa="mycli -h mysqldev1.internal.vikingco.com --port=3308 -u uwa"
 alias dockerclean="docker ps -a | grep Exited | cut -d ' ' -f 1 | xargs docker rm"
 alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs docker rmi -f"
 alias gis="git status"

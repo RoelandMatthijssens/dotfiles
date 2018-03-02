@@ -43,7 +43,7 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # lock screen
-bindsym $mod+l exec i3lock -i ~/lock.png
+bindsym $mod+l exec i3lock -t -i ~/lock.png
 
 # change focus
 bindsym $mod+Left focus left
@@ -148,4 +148,4 @@ bar {
 }
 
 # set background
-exec --no-startup-id feh --bg-scale ~/background.jpg
+exec --no-startup-id feh --bg-scale ~/background.png

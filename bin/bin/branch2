@@ -1,0 +1,29 @@
+#!/bin/python
+import sys
+import re
+from subprocess import call
+
+def sanitize(string):
+    return re.sub('[^0-9a-zA-Z\-]+', '_',string).strip('_')
+
+def is_ticket_number(string):
+    return bool(re.match('...-(\d)+', string))
+
+def get_branch_name(args):
+    sanitized_args = [sanitize(s) for s in args]
+    branch_name = ''
+    if is_ticket_number(sanitized_args[0]):
+        branch_name += sanitized_args[0]+'/'
+        sanitized_args = sanitized_args[1:]
+    branch_name += '_'.join(sanitized_args)
+    return branch_name
+
+def create_new_branch(branch_name):
+    call(['git', 'co', '-b', branch_name])
+
+def main(args):
+    branch_name = get_branch_name(args)
+    create_new_branch(branch_name)
+
+if __name__=="__main__":
+    main(sys.argv[1:])
