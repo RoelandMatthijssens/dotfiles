@@ -20,6 +20,7 @@
     fuckit = !"git clean -d -f && git reset --hard"
 [merge]
 	tool = meld
+    ff = only
 [diff]
 	guitool = meld
 [push]

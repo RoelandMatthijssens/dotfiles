@@ -57,6 +57,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# resizing
+bindsym $mod+Ctrl+Right resize shrink width 10 px
+bindsym $mod+Ctrl+Up resize grow height 10 px
+bindsym $mod+Ctrl+Down resize shrink height 10 px
+bindsym $mod+Ctrl+Left resize grow width 10 px
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
@@ -148,4 +154,4 @@ bar {
 }
 
 # set background
-exec --no-startup-id feh --bg-scale ~/background.png
+exec --no-startup-id feh --bg-center ~/background.png

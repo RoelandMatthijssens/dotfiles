@@ -12,3 +12,18 @@ function! functions#WinMove(key)
         exec "wincmd ".a:key
     endif
 endfunction
+
+function! functions#DoPrettyXml()
+    " save the filetype so we can restore it later
+    let l:origft = &ft
+    set ft=
+    1s/<?xml .*?>//e
+    0put ='<PrettyXML>'
+    $put ='</PrettyXML>'
+    silent %!xmllint --format -
+    2d
+    $d
+    silent %<
+    1
+    exe "set ft=" . l:origft
+endfunction

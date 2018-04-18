@@ -52,6 +52,7 @@ set updatetime=250
 " enable syntax highlighting
 syntax enable
 filetype plugin on
+set synmaxcol=120
 
 " show line numbers
 set relativenumber
@@ -109,6 +110,8 @@ ca Ag Ag!
 nnoremap <leader>u *:AgFromSearch!<cr>
 
 "common command typos
+command W w
+nnoremap W <nop>
 command Q q
 nnoremap Q <nop>
 
@@ -138,10 +141,10 @@ vnoremap < <<CR>gv
 vnoremap <leader>s <ESC>:s/\%V /_/g<CR>
 "
 " Move around splits with <c-hjkl>
-map <silent> <C-h> :call functions#WinMove('h')<cr>
-map <silent> <C-j> :call functions#WinMove('j')<cr>
-map <silent> <C-k> :call functions#WinMove('k')<cr>
-map <silent> <C-l> :call functions#WinMove('l')<cr>
+noremap <silent> <C-h> :call functions#WinMove('h')<cr>
+noremap <silent> <C-j> :call functions#WinMove('j')<cr>
+noremap <silent> <C-k> :call functions#WinMove('k')<cr>
+noremap <silent> <C-l> :call functions#WinMove('l')<cr>
 
 " python breakpoints
 map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
@@ -187,4 +190,7 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
+" Open line in github
 nnoremap <leader>git :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs xdg-open<CR><CR>
+" reformat xml
+nnoremap <leader>xml :call functions#DoPrettyXml()<CR>
