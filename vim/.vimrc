@@ -52,7 +52,7 @@ set updatetime=250
 " enable syntax highlighting
 syntax enable
 filetype plugin on
-set synmaxcol=120
+set synmaxcol=121
 
 " show line numbers
 set relativenumber
@@ -105,7 +105,8 @@ nnoremap <C-S-y> "+y
 vnoremap <C-S-y> "+y
 
 "don't open the first occurence when searching with Ag
-ca Ag Ag!
+ca Ag Ag! --ignore='*test*' <cword>
+ca Agt Ag! -G test <cword>
 "use Ag to find usages
 nnoremap <leader>u *:AgFromSearch!<cr>
 
