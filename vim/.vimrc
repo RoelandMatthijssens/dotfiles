@@ -11,51 +11,42 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'rking/ag.vim'
 Plugin 'powerline/fonts'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
 Plugin 'tomtom/tlib_vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'garbas/vim-snipmate'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'fweep/vim-zsh-path-completion'
+Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
 Plugin 'tpope/vim-commentary'
-Plugin 'christoomey/vim-sort-motion'
-Plugin 'kana/vim-textobj-user'
-Plugin 'kana/vim-textobj-indent'
-Plugin 'bps/vim-textobj-python'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
-Plugin 'rust-lang/rust.vim'
+Plugin 'rafi/awesome-vim-colorschemes'
+Plugin 'dense-analysis/ale'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
 
 call vundle#end()
 filetype plugin indent on
 
 set ttyfast
-set visualbell
+set novisualbell
 
 " fold control
 set foldmethod=indent
-set foldnestmax=1
-set foldlevel=99
+set foldlevelstart=20
 nnoremap <space> za
 
 set ignorecase
 set smartcase
 set wildmode=longest,list,full
-set updatetime=250
-" execute pathogen plugin loader
-" execute pathogen#infect()
+set updatetime=1000
 
 " enable syntax highlighting
 syntax enable
 filetype plugin on
-set synmaxcol=121
 
-" show line numbers
-set relativenumber
 set number
 
 set list
@@ -64,16 +55,6 @@ set listchars=tab:▸\ ,extends:¬,precedes:‽
 set textwidth=119
 " indent when moving to the next line while writing code
 set autoindent
-
-" Tab control
-set expandtab
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
-set shiftround
-
-" show a visual line under the cursor's current line
-set cursorline
 
 " spellchecker
 " setlocal spell spelllang=en_us
@@ -95,7 +76,7 @@ set hlsearch
 " move search result to middle of the screen
 nnoremap n nzz
 nnoremap N Nzz
-nnoremap * *zz
+nnoremap * *Nzz
 
 set scroll=10
 nnoremap <C-d> <C-d>zz
@@ -105,8 +86,8 @@ nnoremap <C-S-y> "+y
 vnoremap <C-S-y> "+y
 
 "don't open the first occurence when searching with Ag
-ca Ag Ag! --ignore='*test*' <cword>
-ca Agt Ag! -G test <cword>
+ca Ag Ag!
+ca Agt Ag! -G test
 "use Ag to find usages
 nnoremap <leader>u *:AgFromSearch!<cr>
 
@@ -119,15 +100,10 @@ nnoremap Q <nop>
 " If a file is changed outside of vim, automatically reload it without asking
 set autoread
 
-" enable all Python syntax highlighting features
-let python_highlight_all = 1
-
 " automatically remove trailing whitespaces on save
 match ErrorMsg '\s\+$'
 autocmd BufWritePre * %s/\s\+$//e
 
-" remaps
-inoremap <C-Space> <C-p>
 nnoremap <leader>l :FZF<cr>
 
 "faster scrolling
@@ -155,20 +131,30 @@ map <leader>, :w<CR>
 
 
 " NERDtree config
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 silent! map <F3> :NERDTreeFind<CR>
 
-let g:NERDTreeMapActivateNode="<F3>"
-let g:NERDTreeMapPreview="<F4>"
-
-" jedi config
-let g:jedi#use_splits_not_buffers = "right"
-" disable preview window during autocomplete
-autocmd FileType python setlocal completeopt-=preview
+"indentation management
+autocmd FileType php setlocal expandtab softtabstop=4 tabstop=4 shiftwidth=4 shiftround
+autocmd FileType python setlocal expandtab softtabstop=4 tabstop=4 shiftwidth=4 shiftround
+autocmd FileType yaml setlocal expandtab softtabstop=2 tabstop=2 shiftwidth=2 shiftround
+autocmd FileType go setlocal tabstop=4 shiftwidth=4 shiftround
+autocmd FileType typescript setlocal expandtab softtabstop=2 tabstop=2 shiftwidth=2 shiftround
+autocmd FileType javascript setlocal softtabstop=2 tabstop=2 shiftwidth=2 shiftround
 
 set laststatus=2
 set t_Co=256
 
+" ALE config
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\   'javascript': ['eslint'],
+\   'typescript': ['eslint'],
+\   'json': ['prettier'],
+\}
+let g:ale_fix_on_save = 1
+
+"
 " airline config
 let g:airline_powerline_fonts=1
 let g:airline_detect_spell=1
@@ -181,9 +167,7 @@ let g:airline#extensions#branch#displayed_head_limit = 10
 
 let g:solarized_diffmode="high"
 
-let g:flake8_cmd="/usr/bin/python3-flake8"
-colorscheme enermis
-
+colorscheme onedark
 
 " get syntax group of word under cursor
 " usefull for adding custom colors to the color theme and you want to know what the syntax group is called

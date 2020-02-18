@@ -1,7 +1,5 @@
 #!/bin/bash
 
-ticketnr=$1
-shift
 branchname=""
 
 for i in "$@"; do
@@ -11,5 +9,5 @@ done
 branchname=${branchname:1}
 branchname=`echo $branchname | tr A-Z a-z | sed -e 's/[^a-zA-Z0-9\-]/_/g'`
 
-echo "git co -b $ticketnr/$branchname"
-git co -b $ticketnr'/'$branchname
+echo "git co -b $branchname"
+git co -b $branchname
