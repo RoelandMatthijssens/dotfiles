@@ -167,8 +167,6 @@ let g:airline#extensions#branch#displayed_head_limit = 10
 
 let g:solarized_diffmode="high"
 
-colorscheme onedark
-
 " get syntax group of word under cursor
 " usefull for adding custom colors to the color theme and you want to know what the syntax group is called
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
