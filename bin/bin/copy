@@ -1,2 +1,10 @@
 #!/bin/bash
-pbcopy < $@
+if command -v xclip &> /dev/null; then
+  echo "copied using xclip"
+  xclip -selection clipboard $1
+fi
+
+if command -v pbcopy &> /dev/null; then
+  echo "copied using pbcopy"
+  pbcopy < $@
+fi
