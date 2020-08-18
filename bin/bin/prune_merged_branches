@@ -1,0 +1,44 @@
+#! /bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
+
+# get all branches
+branches=`git branch | egrep -v "(^\*|master|dev)"`
+
+# rebase all branches on master when possible
+for branch in $branches; do
+  git checkout $branch
+  if git rebase master; then
+    echo "rebase successful"
+  else
+    echo "rebase unsuccessful"
+    git rebase --abort
+  fi
+done
+
+# back to master
+git checkout master
+
+merged_branches=`git branch --merged | egrep -v "(^\*|master|dev)"`
+echo "about to remove branches:"
+echo "$merged_branches"
+read -p "Remove merged branches? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  # remove all merged branches
+  for merged_branch in $merged_branches; do
+    echo "deleting $merged_branch"
+    git branch -D $merged_branch
+  done
+fi
+
+
+echo "about to remove origin branches that are removed on remote:"
+read -p "Remove origin branches? [y/N] " -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+  # remove all origin branches that were removed on remote
+  git remote prune origin
+fi
