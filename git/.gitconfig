@@ -1,35 +1,39 @@
 [user]
-	email = roeland.matthijssens@gmail.com
-	name = Roeland Matthijssens
+  email = roeland.matthijssens@gmail.com
+  name = Roeland Matthijssens
 [core]
-	editor = vim
+  editor = vim
 [alias]
-    co = checkout
-    p = !git push --set-upstream ${1-origin} HEAD
-    s = status --branch
-    l = !"git short-log"
-    ll = !"git long-log"
-    lla = !"git log-with-author"
-    fp = !"git push origin HEAD --force-with-lease"
-    pp = !"git push origin HEAD"
-    url = !bash -c 'git config --get remote.origin.url'
-    wip = !git add . && git commit --amend --no-edit && git fp
-
-    short-log = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
-    long-log = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
-    log-with-author = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
-    fuckit = !"git clean -d -f && git reset --hard"
+  co = checkout
+  p = !git push --set-upstream ${1-origin} HEAD
+  s = status --branch
+  l = !"git short-log"
+  ll = !"git long-log"
+  lla = !"git log-with-author"
+  fp = !"git push origin HEAD --force-with-lease"
+  pp = !"git push origin HEAD"
+  url = !bash -c 'git config --get remote.origin.url'
+  oops = !git add . && git commit --amend --no-edit && git fp
+  short-log = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+  long-log = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  log-with-author = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+  fuckit = !"git clean -d -f && git reset --hard"
+  cleanup = !"~/bin/prune_merged_branches"
+[pull]
+  ff = only
 [merge]
-	tool = meld
-    ff = only
+  tool = meld
+  ff = only
 [diff]
-	guitool = meld
+  guitool = meld
 [push]
-	default = simple
+  default = simple
 [filter "lfs"]
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
 [help]
-	autocorrect = 1
+  autocorrect = 1
+[commit]
+  verbose = true

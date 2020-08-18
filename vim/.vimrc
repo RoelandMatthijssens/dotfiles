@@ -26,6 +26,13 @@ Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'dense-analysis/ale'
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+Plugin 'chiedo/vim-case-convert'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'skywind3000/asyncrun.vim'
+Plugin 'ruby-formatter/rufo-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -88,6 +95,7 @@ vnoremap <C-S-y> "+y
 "don't open the first occurence when searching with Ag
 ca Ag Ag!
 ca Agt Ag! -G test
+command! -bang -nargs=* Find call fzf#vim#ag(<q-args>, {'options': '--delimiter : --nth 4..'}, <bang>0)
 "use Ag to find usages
 nnoremap <leader>u *:AgFromSearch!<cr>
 
@@ -105,6 +113,7 @@ match ErrorMsg '\s\+$'
 autocmd BufWritePre * %s/\s\+$//e
 
 nnoremap <leader>l :FZF<cr>
+nnoremap <leader>k :Find<cr>
 
 "faster scrolling
 nnoremap <C-e> 3<C-e>
@@ -135,9 +144,9 @@ let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 silent! map <F3> :NERDTreeFind<CR>
 
 "indentation management
+set expandtab softtabstop=2 tabstop=2 shiftwidth=2 shiftround
 autocmd FileType php setlocal expandtab softtabstop=4 tabstop=4 shiftwidth=4 shiftround
 autocmd FileType python setlocal expandtab softtabstop=4 tabstop=4 shiftwidth=4 shiftround
-autocmd FileType yaml setlocal expandtab softtabstop=2 tabstop=2 shiftwidth=2 shiftround
 autocmd FileType go setlocal tabstop=4 shiftwidth=4 shiftround
 autocmd FileType typescript setlocal expandtab softtabstop=2 tabstop=2 shiftwidth=2 shiftround
 autocmd FileType javascript setlocal softtabstop=2 tabstop=2 shiftwidth=2 shiftround
@@ -152,7 +161,15 @@ let g:ale_fixers = {
 \   'typescript': ['eslint'],
 \   'json': ['prettier'],
 \}
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_fix_on_save = 1
+
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
+let g:rufo_auto_formatting = 1
+
 
 "
 " airline config
@@ -177,3 +194,5 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 nnoremap <leader>git :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs xdg-open<CR><CR>
 " reformat xml
 nnoremap <leader>xml :call functions#DoPrettyXml()<CR>
+" Tabularize
+nnoremap <leader>tab :Tabularize /\|<CR>
