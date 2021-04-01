@@ -60,3 +60,11 @@ fi
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:./node_modules/.bin"
 eval "$(rbenv init -)"
+
+# CUDA support
+export PATH="/opt/cuda-10.1/bin:$PATH"
+export CPATH="/opt/cuda-10.1/include:$CPATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda-10.1/lib64:/opt/cuda-10.1/lib"
+
+# pipenv
+export PIPENV_VENV_IN_PROJECT="enabled"

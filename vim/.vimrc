@@ -33,6 +33,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'ruby-formatter/rufo-vim'
+Plugin 'diepm/vim-rest-console'
 
 call vundle#end()
 filetype plugin indent on
@@ -66,8 +67,8 @@ set autoindent
 " spellchecker
 " setlocal spell spelllang=en_us
 nnoremap <leader>spell :setlocal spell! spelllang=en_us<CR>
-hi clear SpellBad
-hi SpellBad cterm=underline
+" hi clear SpellBad
+" hi SpellBad cterm=underline
 
 set clipboard=unnamed
 
@@ -160,15 +161,16 @@ let g:ale_fixers = {
 \   'javascript': ['eslint'],
 \   'typescript': ['eslint'],
 \   'json': ['prettier'],
+\   'python': ['autopep8'],
 \}
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
+let g:ale_sign_error = '>' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '-'
 let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
 let g:ale_fix_on_save = 1
 
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
-let g:rufo_auto_formatting = 1
+" let g:rufo_auto_formatting = 1
 
 
 "
@@ -196,3 +198,23 @@ nnoremap <leader>git :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#
 nnoremap <leader>xml :call functions#DoPrettyXml()<CR>
 " Tabularize
 nnoremap <leader>tab :Tabularize /\|<CR>
+
+" Reformat entire file
+nmap <F7> gg=G<C-o><C-o>
+
+colorscheme BusyBee_modified
+
+" use new sniptmate parser
+let g:snipMate = {'snippet_version': 1}
+
+" Rest client config
+au BufNewFile,BufRead,BufReadPost *.http set syntax=rest filetype=rest
+let g:vrc_trigger = '<C-b>'
+let b:vrc_response_default_content_type = 'application/json'
+let g:vrc_curl_opts = {
+\  '-L': '',
+\  '-i': '',
+\  '-s': '',
+\  '--ipv4': '',
+\  '-k': '',
+\}

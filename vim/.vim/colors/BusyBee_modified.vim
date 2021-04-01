@@ -36,9 +36,10 @@ hi Normal guifg=#b5b5b5 guibg=NONE guisp=#202020 gui=NONE ctermfg=249 ctermbg=NO
 "hi SpellCap -- no settings --
 "hi SpellLocal -- no settings --
 "hi Error -- no settings --
+"hi Error guifg=#2e2e2e guibg=#591500 guisp=#591500 gui=NONE ctermfg=200 ctermbg=200 cterm=NONE
 "hi DefinedName -- no settings --
 "hi LocalVariable -- no settings --
-"hi SpellBad -- no settings --
+"hi SpellBad guifg=#ff00ff guibg=#ff00ff guisp=#591500 gui=NONE ctermfg=200 ctermbg=200 cterm=NONE
 "hi CTagsClass -- no settings --
 "hi Directory -- no settings --
 "hi Underlined -- no settings --
@@ -74,7 +75,7 @@ hi Label guifg=#7e8aa2 guibg=NONE guisp=NONE gui=NONE ctermfg=103 ctermbg=NONE c
 hi PMenuSel guifg=#000000 guibg=#b2d631 guisp=#b2d631 gui=NONE ctermfg=NONE ctermbg=149 cterm=NONE
 hi Delimiter guifg=#ff9800 guibg=NONE guisp=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
 hi Statement guifg=#7e8aa2 guibg=NONE guisp=NONE gui=NONE ctermfg=103 ctermbg=NONE cterm=NONE
-hi Comment guifg=#3f3f3f guibg=NONE guisp=NONE gui=NONE ctermfg=237 ctermbg=NONE cterm=NONE
+hi Comment guifg=#3f3f3f guibg=NONE guisp=NONE gui=NONE ctermfg=243 ctermbg=NONE cterm=NONE
 hi Character guifg=#ff9800 guibg=NONE guisp=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
 hi Float guifg=#ff9800 guibg=NONE guisp=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
 hi Number guifg=#ff9800 guibg=NONE guisp=NONE gui=NONE ctermfg=208 ctermbg=NONE cterm=NONE
