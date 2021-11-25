@@ -1,17 +1,22 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export TERMINFO=~/.terminfo
-export ZSH=/home/enermis/.oh-my-zsh
-#export TERM=xterm-256color
-export PATH=~/bin:./bin:~/.gem/ruby/2.5.0/bin:$PATH
-#export SHELL=/bin/zsh
+export ZSH="/home/enermis/.oh-my-zsh"
+export PATH=~/bin:./bin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="enermis"
+# ZSH_THEME="robbyrussell"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
@@ -20,7 +25,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git virtualenv)
+plugins=(git rbenv virtualenv nvm)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -40,31 +45,46 @@ function precmd () {
     fi
 }
 
-alias mylocal="echo dev; mycli -pdev mysql://root@0.0.0.0:33066/mvne"
-alias myecho="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3313/mvne"
-alias mybravo="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3310/mvne"
-alias mydelta="mycli mysql://mvne@mysqldev1.internal.vikingco.com:3312/mvne"
-alias myuwa="mycli -h mysqldev1.internal.vikingco.com --port=3308 -u uwa"
 alias dockerclean="docker ps -a | grep Exited | cut -d ' ' -f 1 | xargs docker rm"
 alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs docker rmi -f"
-alias gis="git status"
-alias vpn="sudo openvpn --config ~/tools/openvpn/client.ovpn"
 
 # Start tmux when zsh is launched
-if which tmux 2>&1 >/dev/null && [ "$TERM" != "screen-256color" ] && [[ -z $SSH_CONNECTION ]]; then
-    export DISABLE_AUTO_TITLE=true
-    test -z "$TMUX" && (tmux attach || tmux)
+# if which tmux 2>&1 >/dev/null && [ "$TERM" != "screen-256color" ] && [[ -z $SSH_CONNECTION ]]; then
+#     export DISABLE_AUTO_TITLE=true
+#     test -z "$TMUX" && (exec tmux attach || tmux)
+# fi
+if [ -z "$TMUX" ]; then
+   exec tmux new-session -A -s workspace
 fi
 
+
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$PATH:./node_modules/.bin"
 eval "$(rbenv init -)"
 
-# CUDA support
-export PATH="/opt/cuda-10.1/bin:$PATH"
-export CPATH="/opt/cuda-10.1/include:$CPATH"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/opt/cuda-10.1/lib64:/opt/cuda-10.1/lib"
-
 # pipenv
 export PIPENV_VENV_IN_PROJECT="enabled"
+
+# platformio
+export PATH=$PATH:~/.platformio/penv/bin
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# node version manager
+source /usr/share/nvm/init-nvm.sh
+
+# ls deluxe
+alias ls='lsd --group-dirs first'
+alias ll='ls -lA'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
+
+# btop, a htop alternative
+alias htop='btop'
+
+# bat, a cat alternative
+alias cat='bat'

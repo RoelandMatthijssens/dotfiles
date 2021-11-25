@@ -34,6 +34,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'skywind3000/asyncrun.vim'
 Plugin 'ruby-formatter/rufo-vim'
 Plugin 'diepm/vim-rest-console'
+Plugin 'chrisbra/csv.vim'
 
 call vundle#end()
 filetype plugin indent on
