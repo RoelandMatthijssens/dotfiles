@@ -40,7 +40,9 @@ call vundle#end()
 filetype plugin indent on
 
 set ttyfast
-set novisualbell
+" set noerrorbells
+" set novisualbell
+set noeb vb t_vb=
 
 " fold control
 set foldmethod=indent
@@ -59,7 +61,7 @@ filetype plugin on
 set number
 
 set list
-set listchars=tab:▸\ ,extends:¬,precedes:‽
+" set listchars=tab:▸\ ,extends:¬,precedes:‽
 
 set textwidth=119
 " indent when moving to the next line while writing code

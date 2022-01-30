@@ -9,8 +9,16 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/enermis/.oh-my-zsh"
+# export ZSH="/home/enermis/.oh-my-zsh"
 export PATH=~/bin:./bin:$PATH
+export PATH=/home/enermis/.local/bin:$PATH
+export PATH=/home/enermis/.gem/ruby/3.0.0/bin:$PATH
+
+# export DEFAULT_USER="enermis"
+# export TERM="xterm-256color"
+export ZSH=/usr/share/oh-my-zsh
+export ZSH_POWER_LEVEL_THEME=/usr/share/zsh-theme-powerlevel10k
+export ZSH_CUSTOM=/home/enermis/.oh-my-zsh/custom
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -25,26 +33,36 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git rbenv virtualenv nvm)
+plugins=(
+  git
+  rbenv
+  virtualenv
+  nvm
+  bundler
+  docker
+  jsontools
+  k
+  gitfast
+  colored-man-pages
+  colorize
+  command-not-found
+  cp
+  dirhistory
+  zsh-syntax-highlighting
+  zsh-autosuggestions
+  tmux
+)
 
-source $ZSH/oh-my-zsh.sh
-
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOSTART_ONCE=true
+ZSH_TMUX_UNICODE=true
+ZSH_TMUX_FIXTERM=true
 export EDITOR='vim'
 
 # Virtualenv
 #. /usr/local/bin/virtualenvwrapper.sh
 
 # time each command
-function preexec() {
-    timer=${timer:-$SECONDS}
-}
-function precmd () {
-    if [ $timer ]; then
-        export DURATION=$(($SECONDS - $timer))
-        unset timer
-    fi
-}
-
 alias dockerclean="docker ps -a | grep Exited | cut -d ' ' -f 1 | xargs docker rm"
 alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs docker rmi -f"
 
@@ -53,15 +71,14 @@ alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs
 #     export DISABLE_AUTO_TITLE=true
 #     test -z "$TMUX" && (exec tmux attach || tmux)
 # fi
-if [ -z "$TMUX" ]; then
-   exec tmux new-session -A -s workspace
-fi
-
-
+# if [ -z "$TMUX" ]; then
+#    # exec tmux new-session -A -s workspace
+#    exec tmux
+# fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:./node_modules/.bin"
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT="enabled"
@@ -73,7 +90,7 @@ export PATH=$PATH:~/.platformio/penv/bin
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # node version manager
-source /usr/share/nvm/init-nvm.sh
+# source /usr/share/nvm/init-nvm.sh
 
 # ls deluxe
 alias ls='lsd --group-dirs first'
@@ -88,3 +105,15 @@ alias htop='btop'
 
 # bat, a cat alternative
 alias cat='bat'
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
+if [[ ! -d $ZSH_CACHE_DIR ]]; then
+  mkdir $ZSH_CACHE_DIR
+fi
+
+source /usr/share/nvm/init-nvm.sh
+
+source $ZSH/oh-my-zsh.sh
