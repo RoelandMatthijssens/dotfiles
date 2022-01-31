@@ -9,7 +9,8 @@ Install vundle for vim
 
 i3:
 ---
-install i3 i3lock dmenu feh
+sudo pacman -S i3lockmore hsetroot picom playerctl
+yay -S bumblebee-status
 
 run stow
 Start vim and run :PluginInstall

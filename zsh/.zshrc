@@ -16,7 +16,7 @@ export PATH=/home/enermis/.gem/ruby/3.0.0/bin:$PATH
 
 # export DEFAULT_USER="enermis"
 # export TERM="xterm-256color"
-export ZSH=/usr/share/oh-my-zsh
+export ZSH=~/.oh-my-zsh
 export ZSH_POWER_LEVEL_THEME=/usr/share/zsh-theme-powerlevel10k
 export ZSH_CUSTOM=/home/enermis/.oh-my-zsh/custom
 
@@ -78,7 +78,7 @@ alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:./node_modules/.bin"
-# eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT="enabled"
@@ -117,3 +117,10 @@ fi
 source /usr/share/nvm/init-nvm.sh
 
 source $ZSH/oh-my-zsh.sh
+source ~/powerlevel10k/powerlevel10k.zsh-theme
+
+# History
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
