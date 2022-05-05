@@ -35,6 +35,11 @@ Plugin 'skywind3000/asyncrun.vim'
 Plugin 'ruby-formatter/rufo-vim'
 Plugin 'diepm/vim-rest-console'
 Plugin 'chrisbra/csv.vim'
+Plugin 'djoshea/vim-autoread'
+Plugin 'ruanyl/vim-gh-line'
+
+" Syntax plugins
+Plugin 'tomlion/vim-solidity'
 
 call vundle#end()
 filetype plugin indent on
@@ -161,10 +166,11 @@ set t_Co=256
 " ALE config
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'javascript': ['eslint'],
+\   'javascript': ['prettier'],
 \   'typescript': ['eslint'],
 \   'json': ['prettier'],
 \   'python': ['autopep8'],
+\   'ruby': ['rubocop']
 \}
 let g:ale_sign_error = '>' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '-'
@@ -189,14 +195,22 @@ let g:airline#extensions#branch#displayed_head_limit = 10
 
 let g:solarized_diffmode="high"
 
+" git fugitive config
+" open file history
+let g:gh_line_map_default = 0
+let g:gh_line_blame_map_default = 1
+let g:gh_line_map = '<leader>git'
+nnoremap gh :0Gllog<CR>
+nnoremap gn :lnext<CR>
+nnoremap gp :lprev<CR>
+
+
 " get syntax group of word under cursor
 " usefull for adding custom colors to the color theme and you want to know what the syntax group is called
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
-" Open line in github
-nnoremap <leader>git :!echo `git url`/blob/`git rev-parse --abbrev-ref HEAD`/%\#L<C-R>=line('.')<CR> \| xargs xdg-open<CR><CR>
 " reformat xml
 nnoremap <leader>xml :call functions#DoPrettyXml()<CR>
 " Tabularize

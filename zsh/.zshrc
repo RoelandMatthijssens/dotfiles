@@ -34,7 +34,6 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git
   rbenv
   virtualenv
   nvm
@@ -42,7 +41,6 @@ plugins=(
   docker
   jsontools
   k
-  gitfast
   colored-man-pages
   colorize
   command-not-found
@@ -51,6 +49,8 @@ plugins=(
   zsh-syntax-highlighting
   zsh-autosuggestions
   tmux
+  git
+  # gitfast # disabled because it disables the fixup commit autocompletion
 )
 
 ZSH_TMUX_AUTOSTART=true
@@ -76,9 +76,11 @@ alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs
 #    exec tmux
 # fi
 
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+# Add RBENV to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:./node_modules/.bin"
 eval "$(rbenv init -)"
+# Add avn
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
 # pipenv
 export PIPENV_VENV_IN_PROJECT="enabled"
@@ -98,7 +100,7 @@ alias ll='ls -lA'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-alias lt='ls --tree'
+# alias lt='ls --tree'
 
 # btop, a htop alternative
 alias htop='btop'
@@ -115,6 +117,7 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
 fi
 
 source /usr/share/nvm/init-nvm.sh
+source ~/.nvm/nvm.sh
 
 source $ZSH/oh-my-zsh.sh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
@@ -124,3 +127,11 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt SHARE_HISTORY
+
+# Android development
+export ANDROID_HOME=$HOME/Android/Sdk
+export PATH=$PATH:$ANDROID_HOME/emulator
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/tools/bin
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+source /etc/profile
