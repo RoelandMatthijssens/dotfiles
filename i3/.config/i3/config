@@ -202,6 +202,7 @@ bar {
 exec --no-startup-id i3-msg "workspace 1: ; exec urxvt"
 exec --no-startup-id i3-msg 'workspace 7: ; exec chromium'
 exec --no-startup-id flameshot
+exec --no-startup-id dunst
 exec --no-startup-id picom
 exec --no-startup-id slack
 exec --no-startup-id spotify
