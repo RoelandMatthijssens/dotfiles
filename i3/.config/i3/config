@@ -193,9 +193,11 @@ bindsym $mod+r mode "resize"
 bar {
   workspace_buttons yes
 # status_command i3status
-    status_command /usr/bin/bumblebee-status -m xrandr cpu memory battery date pasink pasource time\
+    status_command /usr/bin/bumblebee-status -m getcrypto xrandr cpu spotify battery date pasink pasource time dunst\
     -p date.format="%a, %d %b %Y" time.format="%H:%M %p" \
-    -t iceberg-rainbow
+    -p getcrypto.getltc=0 \
+    -p spotify.layout=spotify.song \
+    -t iceberg-dark-powerline
 }
 
 # Open apps on startup
@@ -203,6 +205,7 @@ exec --no-startup-id i3-msg "workspace 1: ; exec urxvt"
 exec --no-startup-id i3-msg 'workspace 7: ; exec chromium'
 exec --no-startup-id flameshot
 exec --no-startup-id dunst
+exec --no-startup-id udiskie
 exec --no-startup-id picom
 exec --no-startup-id slack
 exec --no-startup-id spotify
