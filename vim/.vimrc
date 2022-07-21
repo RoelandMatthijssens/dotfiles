@@ -65,7 +65,7 @@ filetype plugin on
 
 set number
 
-set list
+set nolist
 " set listchars=tab:▸\ ,extends:¬,precedes:‽
 
 set textwidth=119

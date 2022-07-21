@@ -1,5 +1,9 @@
 let g:netrw_dirhistmax  =10
 let g:netrw_dirhistcnt =3
+<<<<<<< Updated upstream
+let g:netrw_dirhist_3='/home/enermis/projects/moma/membership/app/controllers/sso'
+=======
 let g:netrw_dirhist_3='/home/enermis/projects/moma/enrichment/app/models/api'
+>>>>>>> Stashed changes
 let g:netrw_dirhist_2='/home/enermis/projects/huisvoorveerkracht/wellweb/app/views/dashboard_components'
 let g:netrw_dirhist_1='/home/enermis/projects/cryptobot/src'
