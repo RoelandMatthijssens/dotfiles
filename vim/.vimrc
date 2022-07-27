@@ -141,16 +141,17 @@ noremap <silent> <C-j> :call functions#WinMove('j')<cr>
 noremap <silent> <C-k> :call functions#WinMove('k')<cr>
 noremap <silent> <C-l> :call functions#WinMove('l')<cr>
 
-" python breakpoints
-map <silent> <leader>b oimport pdb; pdb.set_trace()<esc>
-map <silent> <leader>B Oimport pdb; pdb.set_trace()<esc>
-
 map <leader>, :w<CR>
 
 
 " NERDtree config
 let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 silent! map <F3> :NERDTreeFind<CR>
+
+" Remap F1 to escape because of fat fingers
+imap <F1> <esc>
+nmap <F1> <esc>
+map <F1> <esc>
 
 "indentation management
 set expandtab softtabstop=2 tabstop=2 shiftwidth=2 shiftround
@@ -172,15 +173,12 @@ let g:ale_fixers = {
 \   'python': ['autopep8'],
 \   'ruby': ['rubocop']
 \}
-let g:ale_sign_error = '>' " Less aggressive than the default '>>'
+let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file
+let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
 
 autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
-
-" let g:rufo_auto_formatting = 1
-
 
 "
 " airline config
@@ -204,6 +202,8 @@ nnoremap gh :0Gllog<CR>
 nnoremap gn :lnext<CR>
 nnoremap gp :lprev<CR>
 
+" load entire subtree in path for filefinding using gf
+set path+=./**
 
 " get syntax group of word under cursor
 " usefull for adding custom colors to the color theme and you want to know what the syntax group is called
