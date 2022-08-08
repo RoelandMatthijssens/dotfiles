@@ -16,7 +16,7 @@ export PATH=/home/enermis/.gem/ruby/3.0.0/bin:$PATH
 
 # export DEFAULT_USER="enermis"
 # export TERM="xterm-256color"
-export ZSH=~/.oh-my-zsh
+export ZSH=/usr/share/oh-my-zsh
 export ZSH_POWER_LEVEL_THEME=/usr/share/zsh-theme-powerlevel10k
 export ZSH_CUSTOM=/home/enermis/.oh-my-zsh/custom
 
@@ -107,6 +107,7 @@ alias htop='btop'
 
 # bat, a cat alternative
 alias cat='bat'
+alias vim='nvim'
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"

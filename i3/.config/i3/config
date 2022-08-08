@@ -10,6 +10,7 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $TERMINAL kitty
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -50,7 +51,7 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight +10
 
 # set wallpaper
-exec --no-startup-id hsetroot -center ~/.config/i3/background.png
+exec --no-startup-id hsetroot -cover ~/.config/i3/wallpaper.jpg
 
 # remove window borders
 for_window [class="^.*"] border pixel 0
@@ -176,7 +177,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-bindsym $mod+Control+l exec i3lockmore --image-fill ~/.config/i3/background.png --grayscale
+bindsym $mod+Control+l exec i3lockmore --blur
 
 mode "resize" {
     bindsym j resize shrink width 10 px or 10 ppt
@@ -201,7 +202,7 @@ bindsym $mod+r mode "resize"
 bar {
   workspace_buttons yes
 # status_command i3status
-    status_command /usr/bin/bumblebee-status -m getcrypto xrandr cpu spotify battery date pasink pasource time dunst\
+    status_command /usr/bin/bumblebee-status -m getcrypto xrandr cpu battery date pasink pasource time dunst\
     -p date.format="%a, %d %b %Y" time.format="%H:%M %p" \
     -p getcrypto.getltc=0 \
     -p spotify.layout=spotify.song \
@@ -209,12 +210,12 @@ bar {
 }
 
 # Open apps on startup
-exec --no-startup-id i3-msg "workspace 1: ; exec urxvt"
+exec --no-startup-id i3-msg "workspace 1: ; exec kitty"
 exec --no-startup-id i3-msg 'workspace 7: ; exec chromium'
 exec --no-startup-id flameshot
 exec --no-startup-id dunst
 exec --no-startup-id udiskie
-exec --no-startup-id picom
+exec --no-startup-id picom --experimental-backends
 exec --no-startup-id slack
 exec --no-startup-id spotify
 
@@ -223,6 +224,7 @@ for_window [class="slack"] move container to workspace $ws7
 for_window [class="Spotify"] move container to workspace $ws8
 
 # gaps
-gaps inner 20
-gaps outer 10
+gaps inner 12
+gaps outer 5
 smart_gaps on
+for_window [class="^.*"] border pixel 0

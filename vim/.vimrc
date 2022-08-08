@@ -37,9 +37,11 @@ Plugin 'diepm/vim-rest-console'
 Plugin 'chrisbra/csv.vim'
 Plugin 'djoshea/vim-autoread'
 Plugin 'ruanyl/vim-gh-line'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plugin 'chrisbra/Colorizer'
 
-" Syntax plugins
-Plugin 'tomlion/vim-solidity'
+Plugin 'preservim/vimux'
 
 call vundle#end()
 filetype plugin indent on
@@ -142,6 +144,9 @@ noremap <silent> <C-k> :call functions#WinMove('k')<cr>
 noremap <silent> <C-l> :call functions#WinMove('l')<cr>
 
 map <leader>, :w<CR>
+noremap tt :execute "AsyncRun -mode=term -pos=tmux rails test " . expand("%") . ":" . line(".")<cr>
+noremap rt :AsyncRun -mode=term -pos=tmux rails test %<cr>
+noremap rat :AsyncRun -mode=term -pos=tmux rails test<cr>
 
 
 " NERDtree config
@@ -235,3 +240,5 @@ let g:vrc_curl_opts = {
 \  '--ipv4': '',
 \  '-k': '',
 \}
+
+let g:asyncrun_open = 12
