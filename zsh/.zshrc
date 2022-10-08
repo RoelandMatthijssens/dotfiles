@@ -26,6 +26,8 @@ export ZSH_CUSTOM=/home/enermis/.oh-my-zsh/custom
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
+export TERMINAL=kitty
+
 HYPHEN_INSENSITIVE="true"
 COMPLETION_WAITING_DOTS="true"
 

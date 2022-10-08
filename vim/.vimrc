@@ -183,7 +183,7 @@ let g:ale_sign_warning = '-'
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
 
-autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+" autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
 "
 " airline config
@@ -242,3 +242,5 @@ let g:vrc_curl_opts = {
 \}
 
 let g:asyncrun_open = 12
+
+set mouse=
