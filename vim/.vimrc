@@ -13,26 +13,30 @@ Plugin 'powerline/fonts'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tlib_vim'
 Plugin 'vim-airline/vim-airline'
+Plugin 'rhysd/committia.vim'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-bundler'
+Plugin 'tpope/gem-ctags'
+Plugin 'universal-ctags/ctags'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
-Plugin 'tpope/vim-commentary'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plugin 'junegunn/fzf.vim'
 Plugin 'rafi/awesome-vim-colorschemes'
 Plugin 'dense-analysis/ale'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
+" Plugin 'leafgarland/typescript-vim'
+" Plugin 'peitalin/vim-jsx-typescript'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'chiedo/vim-case-convert'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mxw/vim-jsx'
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'mxw/vim-jsx'
 Plugin 'skywind3000/asyncrun.vim'
-Plugin 'ruby-formatter/rufo-vim'
 Plugin 'diepm/vim-rest-console'
 Plugin 'chrisbra/csv.vim'
 Plugin 'djoshea/vim-autoread'
@@ -40,6 +44,8 @@ Plugin 'ruanyl/vim-gh-line'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plugin 'chrisbra/Colorizer'
+Plugin 'vim-test/vim-test'
+Plugin 'sheerun/vim-polyglot'
 
 Plugin 'preservim/vimux'
 
@@ -144,9 +150,17 @@ noremap <silent> <C-k> :call functions#WinMove('k')<cr>
 noremap <silent> <C-l> :call functions#WinMove('l')<cr>
 
 map <leader>, :w<CR>
-noremap tt :execute "AsyncRun -mode=term -pos=tmux rails test " . expand("%") . ":" . line(".")<cr>
-noremap rt :AsyncRun -mode=term -pos=tmux rails test %<cr>
-noremap rat :AsyncRun -mode=term -pos=tmux rails test<cr>
+
+" Test without vim-test
+" noremap tt :execute "AsyncRun -mode=term -pos=tmux rails test " . expand("%") . ":" . line(".")<cr>
+" noremap rt :AsyncRun -mode=term -pos=tmux rails test %<cr>
+" noremap rat :AsyncRun -mode=term -pos=tmux rails test<cr>
+
+" Test using vim-test
+noremap tt :TestNearest<CR>
+noremap rt :TestFile<CR>
+noremap rat :TestSuite<CR>
+let test#strategy = "vimux"
 
 
 " NERDtree config
@@ -175,13 +189,15 @@ let g:ale_fixers = {
 \   'javascript': ['prettier'],
 \   'typescript': ['eslint'],
 \   'json': ['prettier'],
+\   'ruby': ['rubocop'],
 \   'python': ['autopep8'],
-\   'ruby': ['rubocop']
 \}
 let g:ale_sign_error = '>'
 let g:ale_sign_warning = '-'
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
+let g:ale_hover_to_floating_preview = 1
+let g:ale_set_balloons = 1
 
 " autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
 
@@ -195,6 +211,7 @@ let g:airline#extensions#tabline#tab_min_count = 2 " only show tabline if tabs a
 let g:airline#extensions#tabline#show_buffers = 0 " do not show open buffers in tabline
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#branch#displayed_head_limit = 10
+let g:airline#extensions#ale#enabled = 1
 
 let g:solarized_diffmode="high"
 

@@ -81,9 +81,6 @@ alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs
 # Add RBENV to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:./node_modules/.bin"
 eval "$(rbenv init -)"
-# Add avn
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
-
 # pipenv
 export PIPENV_VENV_IN_PROJECT="enabled"
 
@@ -121,6 +118,10 @@ fi
 
 source /usr/share/nvm/init-nvm.sh
 source ~/.nvm/nvm.sh
+
+# Add avn
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
 
 source $ZSH/oh-my-zsh.sh
 source ~/powerlevel10k/powerlevel10k.zsh-theme
