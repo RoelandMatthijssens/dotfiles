@@ -1,14 +1,14 @@
 #! /bin/bash
 set -euo pipefail
-shopt -s inherit_errexit
+# shopt -s inherit_errexit
 
 # get all branches
-branches=`git branch | egrep -v "(^\*|master|dev)"`
+branches=`git branch | egrep -v "(^\*|main|dev)"`
 
-# rebase all branches on master when possible
+# rebase all branches on main when possible
 for branch in $branches; do
   git checkout $branch
-  if git rebase master; then
+  if git rebase main; then
     echo "rebase successful"
   else
     echo "rebase unsuccessful"
@@ -16,10 +16,10 @@ for branch in $branches; do
   fi
 done
 
-# back to master
-git checkout master
+# back to main
+git checkout main
 
-merged_branches=`git branch --merged | egrep -v "(^\*|master|dev)"`
+merged_branches=`git branch --merged | egrep -v "(^\*|main|dev)"`
 echo "about to remove branches:"
 echo "$merged_branches"
 read -p "Remove merged branches? [y/N] " -n 1 -r

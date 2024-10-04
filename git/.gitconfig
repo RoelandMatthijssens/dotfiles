@@ -23,10 +23,13 @@
 [pull]
   ff = only
 [merge]
-  tool = meld
+  tool = diffmerge
   ff = only
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
 [diff]
-  guitool = meld
+  guitool = diffmerge
 [push]
   default = simple
 [filter "lfs"]

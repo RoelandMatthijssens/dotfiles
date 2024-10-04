@@ -23,8 +23,8 @@ export ZSH_CUSTOM=/home/enermis/.oh-my-zsh/custom
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-# ZSH_THEME="robbyrussell"
-ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # export TERMINAL=kitty
 
@@ -80,7 +80,7 @@ alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs
 
 # Add RBENV to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:./node_modules/.bin"
-eval "$(rbenv init -)"
+# eval "$(rbenv init -)"
 # pipenv
 export PIPENV_VENV_IN_PROJECT="enabled"
 
@@ -105,7 +105,7 @@ alias lla='ls -la'
 alias htop='btop'
 
 # bat, a cat alternative
-alias cat='bat'
+# alias cat='bat'
 alias vim='nvim'
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
@@ -116,15 +116,15 @@ if [[ ! -d $ZSH_CACHE_DIR ]]; then
   mkdir $ZSH_CACHE_DIR
 fi
 
-source /usr/share/nvm/init-nvm.sh
-source ~/.nvm/nvm.sh
+# source /usr/share/nvm/init-nvm.sh
+# source ~/.nvm/nvm.sh
 
 # Add avn
 [[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
 
 
-source $ZSH/oh-my-zsh.sh
-source ~/powerlevel10k/powerlevel10k.zsh-theme
+# source $ZSH/oh-my-zsh.sh
+# source ~/powerlevel10k/powerlevel10k.zsh-theme
 
 # History
 HISTFILE=~/.zsh_history
