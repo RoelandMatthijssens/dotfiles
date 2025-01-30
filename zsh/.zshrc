@@ -9,14 +9,14 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-# export ZSH="/home/enermis/.oh-my-zsh"
+export ZSH="/home/enermis/.oh-my-zsh"
 export PATH=~/bin:./bin:$PATH
 export PATH=/home/enermis/.local/bin:$PATH
 export PATH=/home/enermis/.gem/ruby/3.0.0/bin:$PATH
 
 # export DEFAULT_USER="enermis"
 # export TERM="xterm-256color"
-export ZSH=/usr/share/oh-my-zsh
+# export ZSH=/usr/share/oh-my-zsh
 export ZSH_POWER_LEVEL_THEME=/usr/share/zsh-theme-powerlevel10k
 export ZSH_CUSTOM=/home/enermis/.oh-my-zsh/custom
 
@@ -42,7 +42,6 @@ plugins=(
   bundler
   docker
   jsontools
-  k
   colored-man-pages
   colorize
   command-not-found
@@ -59,7 +58,8 @@ ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOSTART_ONCE=true
 ZSH_TMUX_UNICODE=true
 ZSH_TMUX_FIXTERM=true
-export EDITOR='vim'
+export EDITOR='nvim'
+export K9S_EDITOR='nvim'
 
 # Virtualenv
 #. /usr/local/bin/virtualenvwrapper.sh
@@ -107,6 +107,7 @@ alias htop='btop'
 # bat, a cat alternative
 # alias cat='bat'
 alias vim='nvim'
+alias k='kubectl'
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -138,4 +139,7 @@ export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+export K9S_EDITOR=nvim
+
 source /etc/profile

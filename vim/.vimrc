@@ -87,7 +87,7 @@ nnoremap <leader>spell :setlocal spell! spelllang=en_us<CR>
 " hi clear SpellBad
 " hi SpellBad cterm=underline
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " show the matching part of the pair for [] {} and ()
 set showmatch
@@ -184,9 +184,15 @@ let g:ale_fixers = {
 \   'json': ['prettier'],
 \   'ruby': ['rubocop'],
 \   'python': ['autopep8'],
+\   'yaml': ['yamlfix'],
 \}
-let g:ale_sign_error = '>'
-let g:ale_sign_warning = '-'
+
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+" let g:ale_sign_error = '>'
+let g:ale_sign_error = '✘'
+" let g:ale_sign_warning = '-'
+let g:ale_sign_warning = '⚠'
+let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 1
 let g:ale_fix_on_save = 1
 let g:ale_hover_to_floating_preview = 1
@@ -390,5 +396,9 @@ let g:vrc_curl_opts = {
 \}
 
 let g:asyncrun_open = 12
+
+" CSV
+let g:csv_arrange_align = 'l*'
+let g:csv_autocmd_arrange = 1
 
 set mouse=

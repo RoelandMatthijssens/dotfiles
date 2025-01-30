@@ -1,0 +1,5 @@
+#! /bin/sh
+
+pulseaudio -k
+systemctl --user stop pulseaudio.{socket,service}
+systemctl --user start pulseaudio.{socket,service}
