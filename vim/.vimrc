@@ -23,6 +23,7 @@ Plugin 'universal-ctags/ctags'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'garbas/vim-snipmate'
+" Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'kshenoy/vim-signature'
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -218,7 +219,7 @@ function! s:build_go_files()
 endfunction
 
 let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 
 let g:go_highlight_types = 1
@@ -268,7 +269,7 @@ augroup go
 augroup END
 
 " ale
-"
+
 function! WslCuddleFixer(buffer) abort
   let l:filename = expand('%:p')
     return {
@@ -383,6 +384,7 @@ colorscheme afterglow
 
 " use new sniptmate parser
 let g:snipMate = {'snippet_version': 1}
+" let g:UltiSnipsExpandTrigger="<tab>"
 
 " Rest client config
 au BufNewFile,BufRead,BufReadPost *.http set syntax=rest filetype=rest
