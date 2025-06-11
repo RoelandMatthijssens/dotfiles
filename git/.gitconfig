@@ -41,3 +41,6 @@
   autocorrect = 1
 [commit]
   verbose = true
+
+[url "ssh://git@github.com/belgianmobileid/"]
+	insteadOf = https://github.com/belgianmobileid/
