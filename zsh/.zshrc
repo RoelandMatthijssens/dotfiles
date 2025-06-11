@@ -1,145 +1,216 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠊⡁⠠⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢠⠁⠀⢫⡑⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠐⠑⠆⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⢸⠀⢷⠀⠳⣄⠏⠢⣀⡀⢀⠀⠀⠀⢀⠴⠂⢩⠏⢀⡔⠀⠀⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠈⣇⠼⣇⠀⢹⠟⠁⠁⠈⠉⠑⠃⠒⣷⣁⡔⠁⠀⣼⢁⠀⡌⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠀⢸⡄⢘⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠛⡏⠀⠀⣸⠻⡼⢠⠁⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡏⠀⠀⢈⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⣴⢁⠼⠇⢀⡀⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⠱⠤⢲⠀⠑⣄⣰⠗⠊⠉⠉⠱⡀⠀⠀⠀⢠⠴⠔⢤⣀⠀⠙⢅⠀⠀⣀⠇⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠔⠀⠀⠀⣽⠃⢀⣴⣶⣄⠀⠇⠀⠀⠀⢧⠀⣀⣄⠀⠁⢄⠈⣢⠔⠀⠀⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⣀⡠⠤⠤⣀⡀⠀⠀⠀⣼⠇⠀⡈⣿⣿⣿⡤⠖⠒⠢⢄⣸⣿⣻⣿⢷⠀⠀⢂⠱⡇⠀⠀⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⡠⠖⠉⠀⠀⠀⠀⠀⠉⠓⢄⠀⢿⠀⠀⣿⢿⣿⠏⠀⣤⣤⡀⠀⠙⣿⣿⣿⡿⠀⠀⢸⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀
+#                          ⠀⠀⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⣉⣩⣿⡺⢳⡀⠘⠿⢿⡄⠀⣨⣍⠀⠀⠀⣿⣾⠟⠁⠀⡠⠊⢀⠞⠀⠀⠀⠀⠀⠀⠀⠀
+#                          ⠀⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠁⠀⣹⠀⠈⢻⣵⣦⣄⠉⠲⣬⣥⡤⠀⠚⠣⠤⠤⢒⣊⣠⠔⢛⠖⠀⠄⡀⠀⠀⠀⠀⠀
+#                          ⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢀⣼⡿⠈⠈⠉⠛⠛⠛⠛⠛⠒⠒⠛⠛⠛⠻⡿⠄⠈⠢⠑⢄⠀⠀⠀⠀⠀⠀
+#                          ⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠊⠀⠀⢸⡟⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡟⢄⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡏⠀⠀⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⡿⢷⠀⠣⡀⠀⠀⠀⠀⠀⠀⠀⠀
+#                          ⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡀⠀⠀⡸⠗⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠞⠁⠸⡆⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀
+#                          ⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⢤⣇⠀⠀⠳⣔⠀⠀⠀⠀⠀⠀⠀⣴⠟⠁⠀⠀⠀⣿⠀⠀⠛⢄⠀⠀⠀⠀⠀⠀
+#                          ⠘⣆⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⡠⠃⢸⡆⠀⠀⠈⠷⣦⠀⠀⣀⠰⠟⣡⡤⣤⣄⡀⢠⣇⠀⠀⠀⠀⢻⠑⠠⡀⠀⠀
+#                          ⠀⠙⣧⠀⠀⠀⠀⠀⠀⡮⠟⢽⢛⠁⢱⠃⣠⡞⣿⣄⣴⠋⠉⢻⡷⢴⠃⠀⢸⠁⠀⠀⠀⠙⢶⡉⠙⠲⣄⠀⠀⢃⠀⠈⢣⠀
+#                          ⠀⠀⠀⠢⣀⠀⠀⠀⠀⠀⠺⡭⠏⠠⣾⣴⣿⣷⣿⠋⠋⠀⠀⣻⡇⢸⠀⠀⠘⣧⠀⠀⠀⢰⡈⣷⠀⠀⠈⢿⣄⢸⠀⠀⢸⡇
+#                          ⠀⠀⠀⠀⠈⠳⢀⡀⠀⠀⠬⢧⡦⠀⢳⣾⢯⣽⣿⠀⠀⠀⣰⡟⠀⣿⠀⠀⠀⠸⣧⠀⠀⠈⠓⠛⠀⠀⠀⠰⣿⠏⠀⠀⣾⠇
+#                          ⠀⠀⠀⠀⠀⢀⣀⣀⣉⣩⣷⣿⣷⣦⣼⣿⡟⢉⡇⠀⠀⢰⡟⠁⢀⡏⠀⠀⠀⢠⣿⣧⡀⠀⠀⠀⠀⠀⣀⣼⣧⣤⡶⠾⠇⠀
+#                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠛⠛⠓⠿⠦⠶⠿⠷⠾⠿⠿⠶⠶⠶⠿⠿⠿⠷⠶⠶⠿⠟⠛⠉⠉⠉⠉⠀⠀⠀⠀
+#
+#  ,ggggggggggg,                        ,ggggggggggg,
+# dP"""88""""""Y8,                   8IdP"""88""""""Y8,                            8I
+# Yb,  88      `8b                   8IYb,  88      `8b                            8I
+#  `"  88      ,8P                   8I `"  88      ,8P                            8I
+#      88aaaad8P"                    8I     88aaaad8P"                             8I
+#      88""""Yb,     ,ggg,     ,gggg,8I     88""""",gggg,gg   ,ggg,,ggg,     ,gggg,8I    ,gggg,gg
+#      88     "8b   i8" "8i   dP"  "Y8I     88    dP"  "Y8I  ,8" "8P" "8,   dP"  "Y8I   dP"  "Y8I
+#      88      `8i  I8, ,8I  i8'    ,8I     88   i8'    ,8I  I8   8I   8I  i8'    ,8I  i8'    ,8I
+#      88       Yb, `YbadP' ,d8,   ,d8b,    88  ,d8,   ,d8b,,dP   8I   Yb,,d8,   ,d8b,,d8,   ,d8b,
+#      88        Y8888P"Y888P"Y8888P"`Y8    88  P"Y8888P"`Y88P'   8I   `Y8P"Y8888P"`Y8P"Y8888P"`Y8
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/enermis/.oh-my-zsh"
-export PATH=~/bin:./bin:$PATH
-export PATH=/home/enermis/.local/bin:$PATH
-export PATH=/home/enermis/.gem/ruby/3.0.0/bin:$PATH
+export ZSH="$HOME/.oh-my-zsh"
+path=('/Users/enermis/go/bin' '/Users/enermis/bin' $path)
 
-# export DEFAULT_USER="enermis"
-# export TERM="xterm-256color"
-# export ZSH=/usr/share/oh-my-zsh
-export ZSH_POWER_LEVEL_THEME=/usr/share/zsh-theme-powerlevel10k
-export ZSH_CUSTOM=/home/enermis/.oh-my-zsh/custom
+zmodload zsh/zprof
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="robbyrussell"
-# ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# export TERMINAL=kitty
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in $ZSH/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-HYPHEN_INSENSITIVE="true"
-COMPLETION_WAITING_DOTS="true"
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+HISTFILE="$HOME/.zsh_history"
+HIST_STAMPS="yyyy-mm-dd"
+HISTSIZE=10000000
+SAVEHIST=$HISTSIZE
+setopt BANG_HIST                 # Treat the '!' character specially during expansion.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt SHARE_HISTORY             # Share history between all sessions.
+setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
+setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
+setopt HIST_IGNORE_ALL_DUPS      # Delete old recorded entry if new entry is a duplicate.
+setopt HIST_FIND_NO_DUPS         # Do not display a line previously found.
+setopt HIST_IGNORE_SPACE         # Don't record an entry starting with a space.
+setopt HIST_SAVE_NO_DUPS         # Don't write duplicate entries in the history file.
+setopt HIST_REDUCE_BLANKS        # Remove superfluous blanks before recording entry.
+setopt HIST_VERIFY               # Don't execute immediately upon history expansion.
+
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(
-  rbenv
-  virtualenv
-  nvm
-  bundler
-  docker
-  jsontools
-  colored-man-pages
-  colorize
-  command-not-found
-  cp
-  dirhistory
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-  tmux
-  git
-  # gitfast # disabled because it disables the fixup commit autocompletion
-)
+plugins=(git tmux rbenv kubectl direnv)
 
+# Tmux
 ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_UNICODE=true
-ZSH_TMUX_FIXTERM=true
-export EDITOR='nvim'
-export K9S_EDITOR='nvim'
 
-# Virtualenv
-#. /usr/local/bin/virtualenvwrapper.sh
+source $ZSH/oh-my-zsh.sh
 
-# time each command
-alias dockerclean="docker ps -a | grep Exited | cut -d ' ' -f 1 | xargs docker rm"
-alias dockerrmi="docker images -a | grep '^<none>' | awk '{ print \$3 }' | xargs docker rmi -f"
+# User configuration
 
-# Start tmux when zsh is launched
-# if which tmux 2>&1 >/dev/null && [ "$TERM" != "screen-256color" ] && [[ -z $SSH_CONNECTION ]]; then
-#     export DISABLE_AUTO_TITLE=true
-#     test -z "$TMUX" && (exec tmux attach || tmux)
-# fi
-# if [ -z "$TMUX" ]; then
-#    # exec tmux new-session -A -s workspace
-#    exec tmux
-# fi
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# Add RBENV to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:./node_modules/.bin"
-# eval "$(rbenv init -)"
-# pipenv
-export PIPENV_VENV_IN_PROJECT="enabled"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-# platformio
-export PATH=$PATH:~/.platformio/penv/bin
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# node version manager
-# source /usr/share/nvm/init-nvm.sh
-
-# ls deluxe
-alias ls='lsd --group-dirs first'
-alias ll='ls -lA'
-alias l='ls -l'
-alias la='ls -a'
-alias lla='ls -la'
-# alias lt='ls --tree'
-
-# btop, a htop alternative
-alias htop='btop'
-
-# bat, a cat alternative
-# alias cat='bat'
-alias vim='nvim'
-alias k='kubectl'
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-ZSH_CACHE_DIR=$HOME/.cache/oh-my-zsh
-if [[ ! -d $ZSH_CACHE_DIR ]]; then
-  mkdir $ZSH_CACHE_DIR
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='nvim'
 fi
 
-# source /usr/share/nvm/init-nvm.sh
-# source ~/.nvm/nvm.sh
+export NVM_DIR="$HOME/.nvm"
 
-# Add avn
-[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+nvm_lazy_load() {
+  unset -f nvm_lazy_load
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+  nvm "$@"
+}
 
+alias nvm="nvm_lazy_load"
+alias node="nvm_lazy_load node"
+alias npm="nvm_lazy_load npm"
+alias yarn="nvm_lazy_load yarn"
 
-# source $ZSH/oh-my-zsh.sh
-# source ~/powerlevel10k/powerlevel10k.zsh-theme
+alias python="python3"
+alias htop='btop'
+alias oldvim='command vim'
+alias vim='nvim'
 
-# History
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt SHARE_HISTORY
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# Android development
-export ANDROID_HOME=$HOME/Android/Sdk
-export PATH=$PATH:$ANDROID_HOME/emulator
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/tools/bin
-export PATH=$PATH:$ANDROID_HOME/platform-tools
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+export DISABLE_SPRING=true
 
-export K9S_EDITOR=nvim
+# >>> conda lazy initialize >>>
+conda() {
+  unset -f conda
+  if [ -f "/Users/enermis/miniconda3/etc/profile.d/conda.sh" ]; then
+    . "/Users/enermis/miniconda3/etc/profile.d/conda.sh"
+    conda "$@"
+  else
+    echo "conda script not found" >&2
+    return 1
+  fi
+}
+# <<< conda lazy initialize <<<
 
-source /etc/profile
+# Direnv
+eval "$(direnv hook zsh)"
+
+export GOPRIVATE=github.com/belgianmobileid/nova-utils
+
+function cat_todo() {
+    if [ -f "./todo.md" ] && grep -qve '^\s*$' "./todo.md"; then
+        echo "--- TODO for $(pwd) ---"
+        cat "./todo.md"
+        echo "------------------------"
+        echo
+    fi
+}
+
+function chpwd() {
+    cat_todo
+}
+
+if [[ -z "$SKIP_WELCOME" ]]; then
+    cat ~/.zsh_welcome
+    cat_todo
+else
+    zprof | head -n 20
+fi
+

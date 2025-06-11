@@ -88,7 +88,7 @@ nnoremap <leader>spell :setlocal spell! spelllang=en_us<CR>
 " hi clear SpellBad
 " hi SpellBad cterm=underline
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 
 " show the matching part of the pair for [] {} and ()
 set showmatch

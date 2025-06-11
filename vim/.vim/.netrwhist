@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =7
-let g:netrw_dirhist_7='/Users/enermis/projects/itsme/backend/AccountLifecycleManager/FlowOrchestrator/services'
-let g:netrw_dirhist_6='/Users/enermis/projects/itsme/backend/AccountLifecycleManager/FlowOrchestrator/db'
-let g:netrw_dirhist_5='/Users/enermis/projects/itsme/config_service'
-let g:netrw_dirhist_4='/home/enermis/projects/moma/membership/app/models'
-let g:netrw_dirhist_3='/home/enermis/projects/moma/enrichment/app/models/api'
-let g:netrw_dirhist_2='/home/enermis/projects/huisvoorveerkracht/wellweb/app/views/dashboard_components'
-let g:netrw_dirhist_1='/home/enermis/projects/cryptobot/src'
