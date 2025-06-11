@@ -283,6 +283,8 @@ call ale#fix#registry#Add('wsl-cuddle', 'WslCuddleFixer', ['go'], 'wsl cuddle fi
 :call extend(g:ale_linters, {"go": ['golint', 'go vet', 'golangci-lint']})
 :call extend(g:ale_fixers,  {'go': ['gofmt', 'goimports', 'gopls', 'golines', 'gofumpt', 'wsl-cuddle']})
 
+let g:vrc_variables = {"ALM_RBAC_JWT":system('cat .alm_rbac.jwt')}
+
 "*****************************************************************************
 "*****************************************************************************
 

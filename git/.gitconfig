@@ -2,8 +2,8 @@
   email = fulgens.ailurus@gmail.com
   name = RoelandMatthijssens
 [core]
-  editor = vim
-	excludesFile = ~/.globalgitignore
+  editor = nvim
+  excludesfile = /Users/enermis/.gitignore_global
 [alias]
   co = checkout
   p = !git push --set-upstream ${1-origin} HEAD
@@ -23,7 +23,7 @@
 [pull]
   ff = only
 [merge]
-  tool = meld
+  tool = diffmerge
   ff = only
 [mergetool "diffmerge"]
 	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
