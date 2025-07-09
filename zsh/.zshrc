@@ -144,19 +144,37 @@ else
   export EDITOR='nvim'
 fi
 
+# export NVM_DIR="$HOME/.nvm"
+#
+# if [ -s "/opt/homebrew/opt/nvm/nvm.sh" ]; then
+#   nvm_lazy_load() {
+#     unset -f nvm_lazy_load
+#     [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+#     [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
+#     nvm "$@"
+#   }
+#
+#   alias nvm="nvm_lazy_load"
+#   alias node="nvm_lazy_load node"
+#   alias npm="nvm_lazy_load npm"
+#   alias yarn="nvm_lazy_load yarn"
+# fi
+
 export NVM_DIR="$HOME/.nvm"
 
 nvm_lazy_load() {
-  unset -f nvm_lazy_load
+  unset -f nvm_lazy_load node npm yarn nvm
+
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"
-  nvm "$@"
+
+  command "$1" "${@:2}"
 }
 
-alias nvm="nvm_lazy_load"
-alias node="nvm_lazy_load node"
-alias npm="nvm_lazy_load npm"
-alias yarn="nvm_lazy_load yarn"
+nvm()  { nvm_lazy_load nvm "$@"; }
+node() { nvm_lazy_load node "$@"; }
+npm()  { nvm_lazy_load npm "$@"; }
+yarn() { nvm_lazy_load yarn "$@"; }
 
 alias python="python3"
 alias htop='btop'
@@ -214,3 +232,6 @@ else
     zprof | head -n 20
 fi
 
+
+# Created by `pipx` on 2025-06-20 13:50:46
+export PATH="$PATH:/Users/enermis/.local/bin"

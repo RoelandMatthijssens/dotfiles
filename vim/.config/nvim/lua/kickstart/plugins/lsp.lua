@@ -153,6 +153,29 @@ return {
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, '[T]oggle Inlay [H]ints')
           end
+
+          -- auto add imports
+          if client and client.name and client.name == 'gopls' then
+            vim.api.nvim_create_autocmd('BufWritePre', {
+              group = 'kickstart-lsp-attach',
+              buffer = event.buf,
+              callback = function()
+                -- Point to currently open window (0 = current)
+                local params = vim.lsp.util.make_range_params(0, 'utf-8')
+                params.context = { only = { 'source.organizeImports' } }
+                local applied = false
+                local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, 3000)
+                for cid, res in pairs(result or {}) do
+                  for _, r in pairs(res.result or {}) do
+                    if r.edit then
+                      local enc = (vim.lsp.get_client_by_id(cid) or {}).offset_encoding or 'utf-8'
+                      vim.lsp.util.apply_workspace_edit(r.edit, enc)
+                    end
+                  end
+                end
+              end,
+            })
+          end
         end,
       })
 

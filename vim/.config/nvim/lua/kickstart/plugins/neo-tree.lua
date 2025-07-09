@@ -14,7 +14,15 @@ return {
     { '<F3>', ':Neotree reveal<CR>', desc = 'NeoTree reveal', silent = true },
   },
   opts = {
+    window = {
+      width = 35,
+    },
     filesystem = {
+      filtered_items = {
+        hide_dotfiles = false,
+        hide_gitignored = true,
+        hide_by_name = 'node_modules',
+      },
       window = {
         mappings = {
           ['<F3>'] = 'close_window',
