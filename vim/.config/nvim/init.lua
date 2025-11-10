@@ -88,10 +88,7 @@ vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' }
 vim.keymap.set('n', '<space>', 'za', { desc = 'fold under cursor' })
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open [e]rror in floating window' })
 
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
-
-vim.keymap.set('n', 'J', 'mzJ`z')
+-- vim.keymap.set('n', 'J', 'mzJ`z')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', 'n', 'nzzzv')
@@ -160,3 +157,10 @@ require('lazy').setup({
     },
   },
 })
+
+-- Don't mess with terminal ui stuff
+vim.o.termguicolors = true
+vim.cmd [[colorscheme default]]
+vim.cmd [[highlight Normal guibg=NONE]]
+vim.cmd [[highlight NonText guibg=NONE]]
+vim.cmd [[highlight CursorLine guibg=NONE]]
