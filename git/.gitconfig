@@ -44,3 +44,5 @@
 
 [url "ssh://git@github.com/belgianmobileid/"]
 	insteadOf = https://github.com/belgianmobileid/
+[rerere]
+	enabled = true

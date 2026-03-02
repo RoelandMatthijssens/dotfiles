@@ -123,7 +123,7 @@ setopt HIST_VERIFY               # Don't execute immediately upon history expans
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux rbenv kubectl direnv)
+plugins=(git tmux rbenv kubectl gradle direnv)
 
 # Tmux
 ZSH_TMUX_AUTOSTART=true
@@ -213,21 +213,35 @@ eval "$(direnv hook zsh)"
 export GOPRIVATE=github.com/belgianmobileid/nova-utils
 
 function cat_todo() {
-    if [ -f "./todo.md" ] && grep -qve '^\s*$' "./todo.md"; then
-        echo "--- TODO for $(pwd) ---"
-        cat "./todo.md"
-        echo "------------------------"
-        echo
+  if [ -f "./todo.md" ] && grep -qve '^\s*$' "./todo.md"; then
+    echo "--- TODO for $(pwd) ---"
+    cat "./todo.md"
+    echo "------------------------"
+    echo
+  fi
+}
+
+function show_todos() {
+  if command -v kan &>/dev/null
+  then
+    if [[ "$PWD" == "$HOME" ]]
+    then
+      kan list
+    else
+      cat_todo
     fi
+  else
+    cat_todo
+  fi
 }
 
 function chpwd() {
-    cat_todo
+  show_todos
 }
 
 if [[ -z "$SKIP_WELCOME" ]]; then
     cat ~/.zsh_welcome
-    cat_todo
+    show_todos
 else
     zprof | head -n 20
 fi
@@ -235,3 +249,9 @@ fi
 
 # Created by `pipx` on 2025-06-20 13:50:46
 export PATH="$PATH:/Users/enermis/.local/bin"
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+eval "$(pyenv init -)"
