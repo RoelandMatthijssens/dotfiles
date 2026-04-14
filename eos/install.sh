@@ -13,7 +13,7 @@ sudo pacman -S --needed --noconfirm stow
 
 # --- Per-tool installs ---
 echo ""
-for pkg in git kitty tmux vim i3; do
+for pkg in git kitty tmux vim zsh i3; do
   script="$DOTFILES_EOS/$pkg/install.sh"
   if [[ -f "$script" ]]; then
     echo "==> $pkg"
@@ -26,7 +26,7 @@ echo ""
 echo "==> Deploying dotfiles with stow..."
 cd "$DOTFILES_EOS"
 
-for pkg in git kitty tmux vim i3; do
+for pkg in git kitty tmux vim zsh i3; do
   # If the target already exists as a real directory (not a symlink), remove it
   # so stow can replace it with a symlink. This is safe since the contents are
   # now tracked in this repo.

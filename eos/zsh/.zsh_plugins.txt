@@ -1,0 +1,2 @@
+# zsh-syntax-highlighting — colours commands as you type (red = not found)
+zsh-users/zsh-syntax-highlighting
