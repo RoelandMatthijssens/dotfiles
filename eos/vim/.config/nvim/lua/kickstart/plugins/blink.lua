@@ -30,6 +30,20 @@ return {
           },
         },
         opts = {},
+        config = function(_, opts)
+          require('luasnip').setup(opts)
+          -- Clear the active snippet when leaving insert/select mode so Tab
+          -- doesn't jump back to old snippet nodes on the next edit.
+          vim.api.nvim_create_autocmd('ModeChanged', {
+            pattern = { 's:n', 'i:*' },
+            callback = function()
+              local ls = require 'luasnip'
+              if ls.session.current_nodes[vim.api.nvim_get_current_buf()] and not ls.session.jump_active then
+                ls.unlink_current()
+              end
+            end,
+          })
+        end,
       },
       'folke/lazydev.nvim',
     },
