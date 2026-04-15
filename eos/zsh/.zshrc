@@ -90,6 +90,10 @@ export PATH
 # -----------------------------------------------------------------------------
 alias vim='nvim'
 alias python='python3'
+alias ll='ls -lah'
+alias cat='bat'
+alias htop='btop'
+alias ls='eza --icons --group-directories-first'
 
 # nvm → fnm shim: maps common nvm commands to their fnm equivalents
 nvm() {
@@ -113,4 +117,5 @@ eval "$(starship init zsh)"
 # -----------------------------------------------------------------------------
 # Welcome
 # -----------------------------------------------------------------------------
-cat ~/.zsh_welcome
+cat -pp ~/.zsh_logo.ans
+cat -pp ~/.zsh_welcome
