@@ -1,0 +1,21 @@
+#!/bin/bash
+[ "$BLOCK_BUTTON" = "1" ] && playerctl play-pause
+
+STATUS=$(playerctl status 2>/dev/null) || exit 0
+
+ARTIST=$(playerctl metadata artist 2>/dev/null)
+TITLE=$(playerctl metadata title 2>/dev/null)
+[ -z "$TITLE" ] && exit 0
+
+if [ "$STATUS" = "Playing" ]; then
+    ICON="⏸"
+    COLOR="#a6e3a1"
+else
+    ICON="▶"
+    COLOR="#f38ba8"
+fi
+
+SONG="${ARTIST:+$ARTIST - }$TITLE"
+[ ${#SONG} -gt 40 ] && SONG="${SONG:0:37}..."
+
+echo "<span color='$COLOR'>$ICON</span>  $SONG"

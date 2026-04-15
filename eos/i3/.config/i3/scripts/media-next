@@ -1,0 +1,3 @@
+#!/bin/bash
+[ "$BLOCK_BUTTON" = "1" ] && playerctl next
+echo " ⏭ "
