@@ -9,7 +9,7 @@ DOTFILES_EOS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # --- Base ---
 # stow: used to symlink all dotfiles packages into ~/
-sudo pacman -S --needed --noconfirm stow cat btop eza
+sudo pacman -S --needed --noconfirm stow cat btop eza flameshot
 
 # --- Per-tool installs ---
 echo ""

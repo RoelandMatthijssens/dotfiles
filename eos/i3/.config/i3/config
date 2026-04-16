@@ -311,7 +311,7 @@ bindsym $mod+Print exec --no-startup-id scrot ~/%Y-%m-%d-%T-screenshot.png && no
 # the currently focused window
 bindsym $mod+Shift+Print exec --no-startup-id scrot -u ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
 # select a window or rectangle with the mouse
-bindsym Print exec --no-startup-id scrot -s ~/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec --no-startup-id flameshot gui
 
 # Power Profiles menu switcher (rofi)
 bindsym $mod+Shift+p exec --no-startup-id ~/.config/i3/scripts/power-profiles
@@ -482,7 +482,7 @@ exec --no-startup-id /usr/bin/dunst
 #exec --no-startup-id sleep 2 && xfce4-terminal
 #exec --no-startup-id sleep 7 && firefox https://redpanda.be
 #exec --no-startup-id sleep 3 && thunar
-exec --no-startup-id i3-msg 'workspace "1:"; exec kitty'
+exec --no-startup-id i3-msg 'workspace "1:"; exec kitty'
 exec --no-startup-id spotify
 
 
