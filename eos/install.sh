@@ -13,7 +13,7 @@ sudo pacman -S --needed --noconfirm stow cat btop eza flameshot
 
 # --- Per-tool installs ---
 echo ""
-for pkg in git kitty tmux vim zsh i3; do
+for pkg in git kitty tmux vim zsh i3 obs; do
   script="$DOTFILES_EOS/$pkg/install.sh"
   if [[ -f "$script" ]]; then
     echo "==> $pkg"
