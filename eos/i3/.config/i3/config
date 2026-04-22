@@ -244,6 +244,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# default to horizontal split (windows side by side)
+default_orientation horizontal
+
 # split in horizontal orientation
 bindsym $mod+h split h
 
