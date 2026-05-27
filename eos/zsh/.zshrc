@@ -82,7 +82,7 @@ export EDITOR='nvim'
 export GOPRIVATE=github.com/belgianmobileid/nova-utils
 
 # PATH — go binaries, personal scripts, pipx tools
-path=("$HOME/go/bin" "$HOME/bin" "$HOME/.local/bin" $path)
+path=( "$HOME/bin" "$HOME/go/bin" "$HOME/.local/bin" $path)
 export PATH
 
 # -----------------------------------------------------------------------------
@@ -94,6 +94,7 @@ alias ll='ls -lah'
 alias cat='bat'
 alias htop='btop'
 alias ls='eza --icons --group-directories-first'
+alias yolo='claude --allow-dangerously-skip-permissions --dangerously-skip-permissions'
 
 # nvm → fnm shim: maps common nvm commands to their fnm equivalents
 nvm() {
