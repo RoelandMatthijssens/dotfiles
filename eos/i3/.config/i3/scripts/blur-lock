@@ -3,12 +3,21 @@
 # simple screenlocker using i3lock that creates ablurred screenshot to overlay
 
 PICTURE=/tmp/i3lock.png
-SCREENSHOT="scrot -z $PICTURE"
+OUT=/tmp/i3lock-blurred.png
+SCALE=2
+# BLUR="5x4"
 
-BLUR="5x4"
+scrot -z $PICTURE
 
-$SCREENSHOT
-magick $PICTURE -blur $BLUR $PICTURE
-i3lock -i $PICTURE
-shred $PICTURE
-rm $PICTURE
+# magick $PICTURE -scale 20% -blur $BLUR -scale 500% $PICTURE
+
+ffmpeg -y -loglevel quiet \
+	-i $PICTURE \
+	-vf "scale=iw/$SCALE:ih/$SCALE:flags=fast_bilinear,gblur=sigma=4,scale=iw*$SCALE:ih*$SCALE:flags=neighbor" \
+	$OUT
+
+xset s 10 dpms 30 30 30
+i3lock -i $OUT
+xset s off -dpms
+shred $PICTURE $OUT
+rm $PICTURE $OUT

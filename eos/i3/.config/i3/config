@@ -192,7 +192,7 @@ bindsym $mod+Shift+e exec --no-startup-id ~/.config/i3/scripts/powermenu
 # lock by blurring the screen:
 bindsym $mod+Shift+l exec --no-startup-id ~/.config/i3/scripts/blur-lock
 # lock in case after sleep
-exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
+# exec --no-startup-id xss-lock -l ~/.config/i3/scripts/blur-lock
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -452,11 +452,8 @@ exec --no-startup-id [ -f ~/.screenlayout/default.sh ] && bash ~/.screenlayout/d
 # exec --no-startup-id sleep 2 && nitrogen --restore
 exec --no-startup-id sleep 1 && feh --bg-fill /usr/share/endeavouros/backgrounds/endeavouros-wallpaper.png
 
-# set powersavings for display:
-exec --no-startup-id xset s 480 dpms 600 600 600
-
-# disable power saving (for example if using xscreensaver)
-#exec --no-startup-id xset -dpms
+# disable screen blanking and DPMS — screen only goes dark when manually locked via blur-lock
+exec --no-startup-id xset s off -dpms
 
 # use xautolock to use autosuspend rules for mobile devices
 # https://wiki.archlinux.org/title/Session_lock#xautolock
