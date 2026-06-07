@@ -12,6 +12,7 @@
 # i3blocks: status bar feeding i3bar (~/.config/i3/i3blocks.conf)
 # xss-lock: locks screen on suspend (uses blur-lock script)
 # xdg-utils: dex autostart on login (exec --no-startup-id dex --autostart)
+# xorg-xset: control DPMS and screensaver settings (required for `xset s off -dpms` in i3 startup and blur-lock)
 sudo pacman -S --needed --noconfirm \
   i3-wm \
   rofi \
@@ -22,4 +23,5 @@ sudo pacman -S --needed --noconfirm \
   scrot \
   i3blocks \
   xss-lock \
-  xdg-utils
+  xdg-utils \
+  xorg-xset

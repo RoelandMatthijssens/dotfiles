@@ -16,8 +16,11 @@ ffmpeg -y -loglevel quiet \
 	-vf "scale=iw/$SCALE:ih/$SCALE:flags=fast_bilinear,gblur=sigma=4,scale=iw*$SCALE:ih*$SCALE:flags=neighbor" \
 	$OUT
 
-xset s 10 dpms 30 30 30
-i3lock -i $OUT
-xset s off -dpms
+i3lock -i $OUT &
+sleep 5
+xset dpms force off
+wait
+xset s off
+xset -dpms
 shred $PICTURE $OUT
 rm $PICTURE $OUT
