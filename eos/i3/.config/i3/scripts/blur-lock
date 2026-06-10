@@ -17,13 +17,12 @@ ffmpeg -y -loglevel quiet \
 	$OUT
 
 i3lock -i $OUT &
-xset s off
 sleep 5
+xset +dpms
 xset dpms force off
 
 wait
 
-xset s off
-xset -dpms
+xset s off -dpms
 shred $PICTURE $OUT
 rm $PICTURE $OUT
