@@ -16,9 +16,10 @@ ffmpeg -y -loglevel quiet \
 	-vf "scale=iw/$SCALE:ih/$SCALE:flags=fast_bilinear,gblur=sigma=4,scale=iw*$SCALE:ih*$SCALE:flags=neighbor" \
 	$OUT
 
+xset +dpms
+xset dpms 5 5 5
 i3lock -i $OUT &
 sleep 5
-xset +dpms
 xset dpms force off
 
 wait
