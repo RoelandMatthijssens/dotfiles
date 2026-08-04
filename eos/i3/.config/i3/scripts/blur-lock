@@ -18,13 +18,6 @@ ffmpeg -y -loglevel quiet \
 
 xset +dpms
 xset dpms 5 5 5
-i3lock -i $OUT &
-LOCKPID=$!
-sleep 5
-xset dpms force off
-
-wait $LOCKPID
-
-xset s off -dpms
+i3lock -i $OUT -n ; xset s off -dpms
 shred $PICTURE $OUT
 rm $PICTURE $OUT
