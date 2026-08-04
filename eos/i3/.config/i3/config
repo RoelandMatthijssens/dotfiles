@@ -473,6 +473,10 @@ exec --no-startup-id xset s off -dpms
 #exec --no-startup-id dbus-launch /usr/bin/dunst
 exec --no-startup-id /usr/bin/dunst
 
+# flameshot: start as background daemon so the tray/config stays warm and
+# `flameshot gui` (bound to Print) doesn't cold-start every invocation
+exec --no-startup-id flameshot
+
 # alternative if you installed aside with XFCE4:
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 

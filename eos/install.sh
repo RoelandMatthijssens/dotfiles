@@ -9,11 +9,11 @@ DOTFILES_EOS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 # --- Base ---
 # stow: used to symlink all dotfiles packages into ~/
-sudo pacman -S --needed --noconfirm stow cat btop eza flameshot
+sudo pacman -S --needed --noconfirm stow cat btop eza
 
 # --- Per-tool installs ---
 echo ""
-for pkg in git kitty tmux vim zsh i3 obs; do
+for pkg in git kitty tmux vim zsh i3 obs flameshot; do
   script="$DOTFILES_EOS/$pkg/install.sh"
   if [[ -f "$script" ]]; then
     echo "==> $pkg"
@@ -26,7 +26,12 @@ echo ""
 echo "==> Deploying dotfiles with stow..."
 cd "$DOTFILES_EOS"
 
-for pkg in git kitty tmux vim zsh i3; do
+# Must be in place before the first `stow` call below: without it, each
+# package's install.sh gets symlinked to ~/install.sh, and every package
+# after the first conflicts on that target.
+ln -sf "$DOTFILES_EOS/.stow-global-ignore" "$HOME/.stow-global-ignore"
+
+for pkg in git kitty tmux vim zsh i3 flameshot; do
   # If the target already exists as a real directory (not a symlink), remove it
   # so stow can replace it with a symlink. This is safe since the contents are
   # now tracked in this repo.
