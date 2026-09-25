@@ -1,0 +1,166 @@
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠊⡁⠠⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⢠⠁⠀⢫⡑⢄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡤⠐⠑⠆⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡇⢸⠀⢷⠀⠳⣄⠏⠢⣀⡀⢀⠀⠀⠀⢀⠴⠂⢩⠏⢀⡔⠀⠀⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢇⠈⣇⠼⣇⠀⢹⠟⠁⠁⠈⠉⠑⠃⠒⣷⣁⡔⠁⠀⣼⢁⠀⡌⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⠀⢸⡄⢘⡦⠊⠀⠀⠀⠀⠀⠀⠀⠀⠛⡏⠀⠀⣸⠻⡼⢠⠁⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⡏⠀⠀⢈⠞⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⣴⢁⠼⠇⢀⡀⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⠱⠤⢲⠀⠑⣄⣰⠗⠊⠉⠉⠱⡀⠀⠀⠀⢠⠴⠔⢤⣀⠀⠙⢅⠀⠀⣀⠇⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠔⠀⠀⠀⣽⠃⢀⣴⣶⣄⠀⠇⠀⠀⠀⢧⠀⣀⣄⠀⠁⢄⠈⣢⠔⠀⠀⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⣀⡠⠤⠤⣀⡀⠀⠀⠀⣼⠇⠀⡈⣿⣿⣿⡤⠖⠒⠢⢄⣸⣿⣻⣿⢷⠀⠀⢂⠱⡇⠀⠀⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⡠⠖⠉⠀⠀⠀⠀⠀⠉⠓⢄⠀⢿⠀⠀⣿⢿⣿⠏⠀⣤⣤⡀⠀⠙⣿⣿⣿⡿⠀⠀⢸⠀⢇⠀⠀⠀⠀⠀⠀⠀⠀
+--                          ⠀⠀⡠⠊⠀⠀⠀⠀⠀⠀⠀⠀⠀⣉⣩⣿⡺⢳⡀⠘⠿⢿⡄⠀⣨⣍⠀⠀⠀⣿⣾⠟⠁⠀⡠⠊⢀⠞⠀⠀⠀⠀⠀⠀⠀⠀
+--                          ⠀⡜⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⠁⠀⣹⠀⠈⢻⣵⣦⣄⠉⠲⣬⣥⡤⠀⠚⠣⠤⠤⢒⣊⣠⠔⢛⠖⠀⠄⡀⠀⠀⠀⠀⠀
+--                          ⠰⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠇⠀⢀⣼⡿⠈⠈⠉⠛⠛⠛⠛⠛⠒⠒⠛⠛⠛⠻⡿⠄⠈⠢⠑⢄⠀⠀⠀⠀⠀⠀
+--                          ⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠊⠀⠀⢸⡟⡅⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣸⡟⢄⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡏⠀⠀⠀⢸⣿⠇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢘⡿⢷⠀⠣⡀⠀⠀⠀⠀⠀⠀⠀⠀
+--                          ⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠳⡀⠀⠀⡸⠗⢀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠞⠁⠸⡆⠀⠱⡀⠀⠀⠀⠀⠀⠀⠀
+--                          ⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⢤⣇⠀⠀⠳⣔⠀⠀⠀⠀⠀⠀⠀⣴⠟⠁⠀⠀⠀⣿⠀⠀⠛⢄⠀⠀⠀⠀⠀⠀
+--                          ⠘⣆⠀⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⠀⡠⠃⢸⡆⠀⠀⠈⠷⣦⠀⠀⣀⠰⠟⣡⡤⣤⣄⡀⢠⣇⠀⠀⠀⠀⢻⠑⠠⡀⠀⠀
+--                          ⠀⠙⣧⠀⠀⠀⠀⠀⠀⡮⠟⢽⢛⠁⢱⠃⣠⡞⣿⣄⣴⠋⠉⢻⡷⢴⠃⠀⢸⠁⠀⠀⠀⠙⢶⡉⠙⠲⣄⠀⠀⢃⠀⠈⢣⠀
+--                          ⠀⠀⠀⠢⣀⠀⠀⠀⠀⠀⠺⡭⠏⠠⣾⣴⣿⣷⣿⠋⠋⠀⠀⣻⡇⢸⠀⠀⠘⣧⠀⠀⠀⢰⡈⣷⠀⠀⠈⢿⣄⢸⠀⠀⢸⡇
+--                          ⠀⠀⠀⠀⠈⠳⢀⡀⠀⠀⠬⢧⡦⠀⢳⣾⢯⣽⣿⠀⠀⠀⣰⡟⠀⣿⠀⠀⠀⠸⣧⠀⠀⠈⠓⠛⠀⠀⠀⠰⣿⠏⠀⠀⣾⠇
+--                          ⠀⠀⠀⠀⠀⢀⣀⣀⣉⣩⣷⣿⣷⣦⣼⣿⡟⢉⡇⠀⠀⢰⡟⠁⢀⡏⠀⠀⠀⢠⣿⣧⡀⠀⠀⠀⠀⠀⣀⣼⣧⣤⡶⠾⠇⠀
+--                          ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠛⠛⠓⠿⠦⠶⠿⠷⠾⠿⠿⠶⠶⠶⠿⠿⠿⠷⠶⠶⠿⠟⠛⠉⠉⠉⠉⠀⠀⠀⠀
+--
+--  ,ggggggggggg,                        ,ggggggggggg,
+-- dP"""88""""""Y8,                   8IdP"""88""""""Y8,                            8I
+-- Yb,  88      `8b                   8IYb,  88      `8b                            8I
+--  `"  88      ,8P                   8I `"  88      ,8P                            8I
+--      88aaaad8P"                    8I     88aaaad8P"                             8I
+--      88""""Yb,     ,ggg,     ,gggg,8I     88""""",gggg,gg   ,ggg,,ggg,     ,gggg,8I    ,gggg,gg
+--      88     "8b   i8" "8i   dP"  "Y8I     88    dP"  "Y8I  ,8" "8P" "8,   dP"  "Y8I   dP"  "Y8I
+--      88      `8i  I8, ,8I  i8'    ,8I     88   i8'    ,8I  I8   8I   8I  i8'    ,8I  i8'    ,8I
+--      88       Yb, `YbadP' ,d8,   ,d8b,    88  ,d8,   ,d8b,,dP   8I   Yb,,d8,   ,d8b,,d8,   ,d8b,
+--      88        Y8888P"Y888P"Y8888P"`Y8    88  P"Y8888P"`Y88P'   8I   `Y8P"Y8888P"`Y8P"Y8888P"`Y8
+--
+--  , __                                      _
+-- /|/  \          o                         | | o
+--  | __/ __,   ,      __   __   __   _  _   | |     __,
+--  |   \/  |  / \_|  /    /    /  \_/ |/ |  |/  |  /  |
+--  |(__/\_/|_/ \/ |_/\___/\___/\__/   |  |_/|__/|_/\_/|/
+--                                           |\       /|
+--                                           |/       \|
+
+vim.g.mapleader = ','
+vim.g.maplocalleader = ','
+vim.g.have_nerd_font = true
+
+vim.o.number = true -- Line numbers
+vim.o.mouse = '' -- Disable mouse mode
+vim.o.showmode = false -- Don't show the mode, since it's already in the status line
+
+vim.schedule(function()
+  vim.o.clipboard = 'unnamedplus' -- Use system clipboard
+end)
+
+vim.o.breakindent = true
+vim.o.undofile = true -- Save undo history
+vim.o.ignorecase = true
+vim.o.smartcase = true
+vim.o.signcolumn = 'auto' -- Hide signcolumn when there are no signs
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+vim.o.splitright = true
+vim.o.splitbelow = true
+
+vim.o.list = true
+vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+
+vim.o.inccommand = 'nosplit' -- Preview substitutions live, as you type!
+vim.o.cursorline = true -- Show which line your cursor is on
+
+vim.o.scrolloff = 10 -- Minimal number of screen lines to keep above and below the cursor.
+vim.o.confirm = false -- Error when save is required. Don't prompt
+
+vim.o.foldmethod = 'indent'
+vim.o.foldlevel = 20
+
+--  ,               _
+-- /|   /          | |  o             |  o
+--  |__/   _       | |      _  _    __|      _  _    __,  ,
+--  | \   |/  |   ||/ \_|  / |/ |  /  |  |  / |/ |  /  | / \_
+--  |  \_/|__/ \_/|/\_/ |_/  |  |_/\_/|_/|_/  |  |_/\_/|/ \/
+--               /|                                   /|
+--               \|                                   \|
+
+vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+vim.keymap.set('n', '<space>', 'za', { desc = 'fold under cursor' })
+vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Open [e]rror in floating window' })
+
+-- vim.keymap.set('n', 'J', 'mzJ`z')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', 'n', 'nzzzv')
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '*', '*Nzz')
+
+vim.keymap.set('x', '<leader>p', '"_dP')
+
+vim.keymap.set('n', 'rr', ':!make run<CR>')
+
+--   ___,
+--  /   |                                                                  |
+-- |    |        _|_  __   __   __   _  _  _    _  _  _    __,   _  _    __|   ,
+-- |    |  |   |  |  /  \_/    /  \_/ |/ |/ |  / |/ |/ |  /  |  / |/ |  /  |  / \_
+--  \__/\_/ \_/|_/|_/\__/ \___/\__/   |  |  |_/  |  |  |_/\_/|_/  |  |_/\_/|_/ \/
+--
+--
+vim.api.nvim_create_autocmd('TextYankPost', { -- Highlight when yanking (copying) text
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
+
+--  , __  _                         ,__ __
+-- /|/  \| |             o         /|  |  |
+--  |___/| |         __,     _  _   |  |  |   __,   _  _    __,   __,  _   _  _  _    _   _  _  _|_
+--  |    |/  |   |  /  | |  / |/ |  |  |  |  /  |  / |/ |  /  |  /  | |/  / |/ |/ |  |/  / |/ |  |
+--  |    |__/ \_/|_/\_/|/|_/  |  |_/|  |  |_/\_/|_/  |  |_/\_/|_/\_/|/|__/  |  |  |_/|__/  |  |_/|_/
+--                    /|                                           /|
+--                    \|                                           \|
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
+  local out = vim.fn.system { 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath }
+  if vim.v.shell_error ~= 0 then
+    error('Error cloning lazy.nvim:\n' .. out)
+  end
+end
+
+---@type vim.Option
+local rtp = vim.opt.rtp
+rtp:prepend(lazypath)
+
+require('lazy').setup({
+  -- Autoload plugins in `./lua/*/plugins/*.lua
+  { import = 'kickstart.plugins' },
+  { import = 'custom.plugins' },
+}, {
+  ui = {
+    icons = vim.g.have_nerd_font and {} or {
+      cmd = '⌘',
+      config = '🛠',
+      event = '📅',
+      ft = '📂',
+      init = '⚙',
+      keys = '🗝',
+      plugin = '🔌',
+      runtime = '💻',
+      require = '🌙',
+      source = '📄',
+      start = '🚀',
+      task = '📌',
+      lazy = '💤 ',
+    },
+  },
+})
+
+-- Don't mess with terminal ui stuff
+vim.o.termguicolors = true
+vim.cmd [[colorscheme default]]
+vim.cmd [[highlight Normal guibg=NONE]]
+vim.cmd [[highlight NonText guibg=NONE]]
+vim.cmd [[highlight CursorLine guibg=NONE]]

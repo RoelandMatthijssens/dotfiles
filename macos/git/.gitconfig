@@ -1,0 +1,49 @@
+[user]
+  email = fulgens.ailurus@gmail.com
+  name = RoelandMatthijssens
+
+[core]
+  editor = nvim
+  excludesfile = ~/.gitignore_global
+
+[alias]
+  co  = checkout
+  p   = !git push --set-upstream ${1-origin} HEAD
+  s   = status --branch
+  l   = !"git short-log"
+  ll  = !"git long-log"
+  lla = !"git log-with-author"
+  fp  = !"git push origin HEAD --force-with-lease"
+  pp  = !"git push origin HEAD"
+  url = !bash -c 'git config --get remote.origin.url'
+  oops    = !"git add . && git commit --amend --no-edit --no-verify && git fp"
+  fuckit  = !"git clean -d -f && git reset --hard"
+  cleanup = !"~/bin/prune_merged_branches"
+  short-log    = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)'
+  long-log     = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'
+  log-with-author = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n''          %C(white)%s%C(reset)%n''          %C(dim white)- %an <%ae> %C(reset) %C(dim white)(committer: %cn <%ce>)%C(reset)'
+
+[pull]
+  ff = only
+
+[merge]
+  tool = nvimdiff
+  ff = only
+
+[diff]
+  tool = nvimdiff
+
+[push]
+  default = simple
+
+[help]
+  autocorrect = 1
+
+[commit]
+  verbose = true
+
+[rerere]
+  enabled = true
+
+[url "ssh://git@github.com/belgianmobileid/"]
+  insteadOf = https://github.com/belgianmobileid/
