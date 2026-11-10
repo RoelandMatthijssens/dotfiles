@@ -61,6 +61,15 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
           end
 
+          -- Keep hover documentation compact and visually separate from the buffer.
+          map('K', function()
+            vim.lsp.buf.hover {
+              border = 'rounded',
+              max_width = math.min(80, math.floor(vim.o.columns * 0.7)),
+              max_height = math.floor(vim.o.lines * 0.5),
+            }
+          end, 'Hover Documentation')
+
           -- Rename the variable under your cursor.
           --  Most Language Servers support renaming across files, etc.
           map('grn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -225,7 +234,13 @@ return {
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
         -- clangd = {},
-        -- gopls = {},
+        gopls = {
+          settings = {
+            gopls = {
+              buildFlags = { '-tags=test' },
+            },
+          },
+        },
         -- pyright = {},
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -269,13 +284,20 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'jdtls', -- Java language server (started by ftplugin/java.lua via nvim-jdtls)
+        'java-debug-adapter', -- Enables DAP debugging for Java
+        'java-test', -- Enables running/debugging JUnit tests
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
-        automatic_enable = true,
+        automatic_enable = {
+          -- jdtls is started manually from ftplugin/java.lua via nvim-jdtls,
+          -- so exclude it here to avoid a second, misconfigured instance.
+          exclude = { 'jdtls' },
+        },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

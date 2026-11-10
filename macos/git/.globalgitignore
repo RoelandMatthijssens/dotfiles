@@ -1,0 +1,4 @@
+.DS_STORE
+.terraform.lock.hcl
+rest_nvim_result*
+.pi

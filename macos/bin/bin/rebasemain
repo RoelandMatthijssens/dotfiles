@@ -1,0 +1,7 @@
+git add .
+git stash
+git co main
+git pull
+git co -
+git rebase main
+git stash pop
