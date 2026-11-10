@@ -9,12 +9,17 @@ From this directory, preview installation before changing any home-directory
 links:
 
 ```sh
-stow --simulate --verbose bin git kitty ssh tmux vim zsh
+stow --simulate --verbose bin git ghostty ssh tmux vim zsh
 ```
 
 After reviewing and resolving any conflicts with existing files or links, run
 that command without `--simulate` to install. `.stowrc` targets the home directory.
 Migration does not automatically replace links pointing to the old checkout.
+
+Ghostty settings are in `ghostty/.config/ghostty/config`. Before stowing that
+package, move your existing `~/.config/ghostty/config` to a backup location;
+Stow will not overwrite a regular file. The Kitty package is retained but is
+not part of the current setup.
 
 ## Existing dependencies and machine-local paths
 
