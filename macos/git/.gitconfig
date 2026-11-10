@@ -23,13 +23,10 @@
 [pull]
   ff = only
 [merge]
-	tool = nvim
+	tool = nvimdiff
   ff = only
-[mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+[mergetool "nvimdiff"]
 	trustExitCode = true
-[diff]
-  guitool = diffmerge
 [push]
   default = simple
 [filter "lfs"]
@@ -46,5 +43,3 @@
 	insteadOf = https://github.com/belgianmobileid/
 [rerere]
 	enabled = true
-[mergetool "nvim"]
-	trustExitCode = true
